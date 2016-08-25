@@ -11,6 +11,8 @@ General Assemblage is a social networking tool that connects General Assembly st
 * Ruby on Rails
 * HTML/CSS
 * Materialize, SCSS
+* Heroku
+* Postgresql
 
 ### Gems(planned as of now)
 * Ransack
@@ -28,13 +30,17 @@ General Assemblage is a social networking tool that connects General Assembly st
 ### Collaborators to this project
 
 ![Alt text](http://i.imgur.com/mU2Z2VF.png)
+#### Natalia Polichshuk
 -https://github.com/natapoli90
 
 ![Alt text](http://i.imgur.com/rjuE0ML.png)
+#### Paolo Sese
 -https://github.com/jpaolosese
 
 ![Alt text](http://i.imgur.com/Wfo9WTH.png)
+#### James de la Cruz
 -https://github.com/jamesdlc
 
 ![Alt text](http://i.imgur.com/E2QItNW.png)
+#### Matt Brown
 -https://github.com/mattericbrown
