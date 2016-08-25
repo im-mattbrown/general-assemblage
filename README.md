@@ -26,6 +26,7 @@ General Assemblage is a social networking tool that connects General Assembly st
 
 #### ERD - Entity Relationship Diagram
 
+![Alt text](http://i.imgur.com/Cxo9187.png "ERD")
 
 ### Collaborators to this project
 
