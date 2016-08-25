@@ -101,7 +101,7 @@ User should be able to do the following:<br />
     * After clicking “Delete”, see a pop-up that say asks the user to confirm Delete request<br />
     * If confirmed, delete the post.<br />
 #####Sprint 3: Validations & Authorization
-User should be able to do:
+User should be able to do:<br />
 1. View Article Show pages for “San Buena Taco Truck” and “WDI Mixer”<br />
 2. Verify that a new Comment they create is successfully published on the correct Article Page<br />
 A user is authorized to perform certain actions on General Assemblage according to the following rules:
