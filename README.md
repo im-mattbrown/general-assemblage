@@ -20,6 +20,6 @@ General Assemblage is a social networking tool that connects General Assembly st
 
 #### Wireframes / Mockups
 
-! [Alt text](http://i.imgur.com/O5jZ5dW.png "Wireframes")
+![Alt text](http://i.imgur.com/O5jZ5dW.png "Wireframes")
 
 #### ERD - Entity Relationship Diagram
