@@ -28,9 +28,6 @@ General Assemblage is a social networking tool that connects General Assembly st
 
 ![Alt text](http://i.imgur.com/rpejNCZ.png "ERD")
 
-#### User Stories / Sprints
-
-![Alt text](http://i.imgur.com/zVxEvlM.png "User story")
 ### Collaborators to this project
 
 ![Alt text](http://i.imgur.com/mU2Z2VF.png)
