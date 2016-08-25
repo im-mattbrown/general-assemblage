@@ -26,28 +26,10 @@ General Assemblage is a social networking tool that connects General Assembly st
 
 #### ERD - Entity Relationship Diagram
 
-![Alt text](http://i.imgur.com/Cxo9187.png "ERD")
+![Alt text](http://i.imgur.com/rpejNCZ.png "ERD")
 
-### Collaborators to this project
-
-![Alt text](http://i.imgur.com/mU2Z2VF.png)
-#### Natalia Polichshuk
--https://github.com/natapoli90
-
-![Alt text](http://i.imgur.com/rjuE0ML.png)
-#### Paolo Sese
--https://github.com/jpaolosese
-
-![Alt text](http://i.imgur.com/Wfo9WTH.png)
-#### James de la Cruz
--https://github.com/jamesdlc
-
-![Alt text](http://i.imgur.com/E2QItNW.png)
-#### Matt Brown
--https://github.com/mattericbrown
-
-##### User Story/ Sprints
-#####Sprint 1: Profiles and Auth
+#### User Story/ Sprints
+####Sprint 1: Profiles and Auth
 User should be able to do the following:<br />
 1. Navigate to root directory and see a splash page.  The splash page will contain the following:<br />
     * Website header<br />
@@ -69,10 +51,10 @@ User should be able to do the following:<br />
 7. See the titles of all the articles they’ve posted<br />
 8. Click on one of their articles and be redirected to a show page for that article<br />
 9. Article show page will display Date & Time posted, Content, Replies (Comments) and author.<br />
-#####Sprint 2: CRUD
+####Sprint 2: CRUD
 User should be able to do the following:<br />
 1. Create an Article, which will be posted to the Article Feed (Index Page).<br />
-    * When creating an Article, user will choose from the following types and specify their needs in the Article body<br />
+  * When creating an Article, user will choose from the following types and specify their needs in the Article body<br />
         1. Help wanted<br />
             * Request assistance to complete a task (e.g. WDI students working on a group project looking for a UX/UI student to help storyboard and wireframe)<br />
             * Having trouble with coding problems, design problems, etc.<br />
@@ -100,7 +82,7 @@ User should be able to do the following:<br />
 6. Click “Delete” on Any individual Article<br />
     * After clicking “Delete”, see a pop-up that say asks the user to confirm Delete request<br />
     * If confirmed, delete the post.<br />
-#####Sprint 3: Validations & Authorization
+####Sprint 3: Validations & Authorization
 User should be able to do:<br />
 1. View Article Show pages for “San Buena Taco Truck” and “WDI Mixer”<br />
 2. Verify that a new Comment they create is successfully published on the correct Article Page<br />
@@ -113,10 +95,28 @@ A user won’t be able to save invalid data to the database, according to the fo
 3. An Article’s content can’t be empty<br />
 4. An Type must be chosen for an Article<br />
 5. Article comments can’t be empty<br />
-#####Sprint 4: Stretch Goals
+####Sprint 4: Stretch Goals
 1. See their profile photo next to their posts<br />
 2. Receive a welcome email after registering<br />
 3. Update their profile pictures by using a Picture Upload Gem<br />
 4. Following<br />
 5. Liking<br />
 6. Add Comment<br />
+
+### Collaborators to this project
+
+![Alt text](http://i.imgur.com/mU2Z2VF.png)
+#### Natalia Polichshuk
+-https://github.com/natapoli90
+
+![Alt text](http://i.imgur.com/rjuE0ML.png)
+#### Paolo Sese
+-https://github.com/jpaolosese
+
+![Alt text](http://i.imgur.com/Wfo9WTH.png)
+#### James de la Cruz
+-https://github.com/jamesdlc
+
+![Alt text](http://i.imgur.com/E2QItNW.png)
+#### Matt Brown
+-https://github.com/mattericbrown
