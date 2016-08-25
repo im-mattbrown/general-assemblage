@@ -32,9 +32,9 @@ General Assemblage is a social networking tool that connects General Assembly st
 ####Sprint 1: Profiles and Auth
 User should be able to do the following:<br />
 1. Navigate to root directory and see a splash page.  The splash page will contain the following:<br />
-..    * Website header<br />
-..    * Email and PW fields to Log In and a link to Sign Up<br />
-..    * A brief informative<br />
+      * Website header<br />
+    * Email and PW fields to Log In and a link to Sign Up<br />
+    * A brief informative<br />
 2. Click the Sign Up link to register<br />
 3. If already registered, Log In to their account and be redirected to the Index Page (Article Feed)<br />
 4. Also once logged in, they will see a site-wide navigation bar that contains the following:<br />
