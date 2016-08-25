@@ -23,3 +23,18 @@ General Assemblage is a social networking tool that connects General Assembly st
 ![Alt text](http://i.imgur.com/O5jZ5dW.png "Wireframes")
 
 #### ERD - Entity Relationship Diagram
+
+
+### Collaborators to this project
+
+![Alt text](http://i.imgur.com/mU2Z2VF.png)
+-https://github.com/natapoli90
+
+![Alt text](http://i.imgur.com/rjuE0ML.png)
+-https://github.com/jpaolosese
+
+![Alt text](http://i.imgur.com/Wfo9WTH.png)
+-https://github.com/jamesdlc
+
+![Alt text](http://i.imgur.com/E2QItNW.png)
+-https://github.com/mattericbrown
