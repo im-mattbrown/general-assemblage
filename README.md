@@ -1,24 +1,22 @@
-# README
+# General Assemblage
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+General Assemblage is a social networking tool that connects General Assembly students across disciplines and locations to facilitate learning and creating collaboration. This is a full stack rails app served on Heroku Cloud Application Platform featuring the following technologies.
 
-Things you may want to cover:
+##### User Example Login Information
+- email : student@ga.com
+- password : assemble
 
-* Ruby version
+### Technologies Used
 
-* System dependencies
+* Ruby on Rails
+* HTML/CSS
+* Materialize, SCSS
 
-* Configuration
+### Gems
+* Ransack
+* Social Share Button
+* Materialize Sass
 
-* Database creation
+#### Wireframes / Mockups
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+#### ERD - Entity Relationship Diagram
