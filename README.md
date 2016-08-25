@@ -12,11 +12,14 @@ General Assemblage is a social networking tool that connects General Assembly st
 * HTML/CSS
 * Materialize, SCSS
 
-### Gems
+### Gems(planned as of now)
 * Ransack
 * Social Share Button
 * Materialize Sass
+* acts_as_follower
 
 #### Wireframes / Mockups
+
+! [Alt text](http://i.imgur.com/O5jZ5dW.png "Wireframes")
 
 #### ERD - Entity Relationship Diagram
