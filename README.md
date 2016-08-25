@@ -19,10 +19,11 @@ General Assemblage is a social networking tool that connects General Assembly st
 * Social Share Button
 * Materialize Sass
 * acts_as_follower
+* will_paginate
 
 #### Wireframes / Mockups
 
-![Alt text](http://i.imgur.com/O5jZ5dW.png "Wireframes")
+![Alt text](http://i.imgur.com/TR1zV4q.png "Wireframes")
 
 #### ERD - Entity Relationship Diagram
 
