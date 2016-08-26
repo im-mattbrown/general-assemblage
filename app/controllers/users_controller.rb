@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
-    redirect_to "/"
+    redirect_to user_path
   end
 
   def edit
@@ -23,7 +23,8 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find_by_id(params[:id])
-    @user.update_attributes(user_params)
+    @user.update(user_params)
+    redirect_to @user
   end
 
 private
