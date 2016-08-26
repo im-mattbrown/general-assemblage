@@ -6,10 +6,10 @@
       </div>
     <br>
     <div class="row">
-      <h2><%=  @user.user_name %> </h2>
-      <h4>Course: <%=  @user.course_taken %> </h4>
-      <h4>City: <%=  @user.city %> </h4>
-      <h4>Date Joined: <%= @user.created_at.localtime.strftime("%B #{@user.created_at.day.ordinalize}, %Y") %> </h4>
+      <h3><%=  @user.user_name %> </h3>
+      <h5>Course: <%=  @user.course_taken %> </h5>
+      <h5>City: <%=  @user.city %> </h5>
+      <h5>Joined: <%= @user.created_at.localtime.strftime("%B #{@user.created_at.day.ordinalize}, %Y") %> </h5>
     </div>
   </div>
 </div>
