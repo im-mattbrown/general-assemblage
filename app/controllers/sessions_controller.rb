@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     @user = User.confirm(user_params)
     if @user
       login(@user)
-      redirect_to @user
+      redirect_to articles_path
     else
       redirect_to new_session_path
     end
