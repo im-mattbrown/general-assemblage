@@ -1,0 +1,13 @@
+<legend>Edit Profile</legend>
+
+<%= form_for @user do |f| %>
+  First Name: <%= f.text_field :first_name %><br>
+  Last Name: <%= f.text_field :last_name %><br>
+  Email: <%= f.text_field :email %><br>
+  User Name: <%= f.text_field :user_name %><br>
+  Profile Picture: <%= f.text_field :image_url %><br>
+  Course Taken at GA: <%= f.text_field :course_taken %><br>
+  Current City: <%= f.text_field :city %><br>
+  Password: <%= f.password_field :password %>
+  <%= f.submit "Submit" %>
+<% end %>
