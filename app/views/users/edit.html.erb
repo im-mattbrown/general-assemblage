@@ -6,8 +6,8 @@
   Email: <%= f.text_field :email %><br>
   User Name: <%= f.text_field :user_name %><br>
   Profile Picture: <%= f.text_field :image_url %><br>
-  Course Taken at GA: <%= f.text_field :course_taken %><br>
-  Current City: <%= f.text_field :city %><br>
+  Course Taken at GA: <%= f.select :course_taken, ["WDI", "UXDI", "DSI", "ADI", "IOSI"] %> <br />
+  Current City: <%= f.select :city, ["Atlanta", "Austin", "Boston", "Chicago", "Denver", "Hong Kong", "London", "Los Angeles", "Melbourne", "New York City", "San Francisco", "Singapore", "Sydney", "Washington DC"] %> <br />
   Password: <%= f.password_field :password %>
   <%= f.submit "Submit" %>
 <% end %>
