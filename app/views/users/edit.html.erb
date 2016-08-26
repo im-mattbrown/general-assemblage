@@ -1,13 +1,13 @@
-<legend>Edit Profile</legend>
-
+<div class="edit-form">
+<h5>Edit Profile</h5>
 <%= form_for @user do |f| %>
-  First Name: <%= f.text_field :first_name %><br>
-  Last Name: <%= f.text_field :last_name %><br>
+  <strong>First Name:</strong> <%= f.text_field :first_name %><br>
+  <Last Name: <%= f.text_field :last_name %><br>
   Email: <%= f.text_field :email %><br>
   User Name: <%= f.text_field :user_name %><br>
   Profile Picture: <%= f.text_field :image_url %><br>
-  Course Taken at GA: <%= f.text_field :course_taken %><br>
-  Current City: <%= f.text_field :city %><br>
-  Password: <%= f.password_field :password %>
+  Course Taken at GA:<%= f.collection_select :course_taken, User::COURSE, :to_s, :to_s, :include_blank => false, :prompt => "Select Option" %> <br>
+  Campus: <%= f.collection_select :city, User::CITIES, :to_s, :to_s, :include_blank => false, :prompt => "Select Option" %> <br />
   <%= f.submit "Submit" %>
 <% end %>
+</div>

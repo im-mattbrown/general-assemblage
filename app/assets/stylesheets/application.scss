@@ -13,3 +13,52 @@
  *= require_tree .
  *= require_self
  */
+@import "materialize";
+
+body {
+
+}
+
+.ga-background {
+  background-image: url(http://i.imgur.com/9G4Ar7a.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.nav-logo {
+  height: 64px;
+  width: auto;
+  padding-right: 20px;
+}
+
+.edit-form {
+  position: absolute;
+  padding-top: 30px;
+  left: 30%;
+  width: 40%;
+}
+
+#splash-header {
+  position: absolute;
+  top: 20%;
+  color: rgba(255,255,255,.4);
+  left: 5%;
+}
+
+#splash-text {
+  position: absolute;;
+  top: 30%;
+  padding-left: 10%;
+  padding-right: 5%;
+  color: rgba(255,255,255,.8);
+  font-size: 25px;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.3);
+  z-index: 9999;
+}

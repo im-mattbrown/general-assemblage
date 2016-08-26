@@ -1,7 +1,7 @@
 <legend>Log In</legend>
 
-<%= form_for @user method: 'post' do |f| %>
-  Username: <%= f.text_field :user_name %><br>
+<%= form_for @user, url: '/sessions', method: 'post' do |f| %>
+  Email: <%= f.text_field :email %><br>
   Password: <%= f.password_field :password %>
   <%= f.submit "Submit" %>
 <% end %>

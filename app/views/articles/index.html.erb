@@ -1,0 +1,8 @@
+<% @articles.each do |f| %>
+  <strong><%= f.title %></strong><br>
+  <%= f.content %><br>
+  Type: <%= f.article_type %><br>
+  Location: <%= f.city %> <br>
+  Posted at: <%= f.created_at.localtime.strftime("%b %-d, %Y %H:%M") %> <br>
+  <p>
+<% end %>
