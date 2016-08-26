@@ -1,0 +1,9 @@
+<legend>New Article</legend>
+
+<%= form_for @article do |f| %>
+  Title: <%= f.text_field :title %><br>
+  Content: <%= f.text_field :content %><br>
+  Article Type: <%= f.collection_select :article_type, Article::TYPE, :to_s, :to_s, :include_blank => false, :prompt => "Select Option" %> <br>
+  Current City: <%= f.collection_select :city, Article::CITY, :to_s, :to_s, :include_blank => false, :prompt => "Select Option" %> <br>
+  <%= f.submit "Submit" %>
+<% end %>
