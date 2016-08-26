@@ -1,6 +1,6 @@
 <legend>Sign Up</legend>
 
-<%= form_for :user, url: '/users' do |f| %>
+<%= form_for @user do |f| %>
   First Name: <%= f.text_field :first_name %><br>
   Last Name: <%= f.text_field :last_name %><br>
   Email: <%= f.text_field :email %><br>
