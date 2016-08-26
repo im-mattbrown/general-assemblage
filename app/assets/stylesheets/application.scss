@@ -16,5 +16,17 @@
 @import "materialize";
 
 body {
-  background-color: blue;
+
+}
+
+.ga-background {
+  background-image: url(http://i.imgur.com/rxKe173.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.nav-logo {
+  height: 64px;
+  width: auto;
+  padding-right: 20px;
 }
