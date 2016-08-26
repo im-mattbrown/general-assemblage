@@ -7,6 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.destroy_all
+Article.destroy_all
+Comment.destroy_all
 
 p "deleting users..."
 
@@ -23,6 +25,27 @@ USERS = [
   }
 ]
 
+ARTICLES = [
+  {
+    title: "Hi I'm Switt",
+    content: "SWITTT SWITT SWITT",
+    city: "Chicago",
+    article_type: "Off Topic",
+    user_id: 1
+  }
+]
+
+COMMENTS = [
+  {
+    content: "Ok?",
+    user_id: 1,
+    article_id: 1
+  }
+]
+
+
 User.create(USERS)
+Article.create(ARTICLES)
+Comment.create(COMMENTS)
 
 p "#{User.count} users created!"

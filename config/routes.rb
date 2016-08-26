@@ -13,11 +13,11 @@ Rails.application.routes.draw do
 
   get '/articles', to: "articles#index", as: "articles"
   get '/articles/new', to: "articles#new", as: "new_article"
-  # post "/cities/:city_id/posts", to: "city_posts#create", as: "new_city_post"
+  post '/articles', to: "articles#create"
   # get "/cities/:city_id/posts/:post_id", to: "posts#show", as: "post"
-  # get "/cities/:city_id/posts/:post_id/edit", to: "posts#edit", as: "edit_post"
-  # patch "/cities/:city_id/posts/:post_id", to: "posts#update", as: "update_post"
-  # delete "/cities/:city_id/posts/:post_id", to: "posts#destroy"
-  #
-  # get "*unmatched_route", to: "application#not_found"
+  get '/articles/:id/edit', to: 'articles#edit', as: "edit_article"
+  patch '/articles/:id', to: "articles#update", as: "update_article"
+  delete '/articles/:id', to: "articles#destroy"
+  
+  get "*unmatched_route", to: "application#not_found"
 end
