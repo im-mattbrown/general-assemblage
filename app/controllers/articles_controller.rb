@@ -4,6 +4,21 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:article_id])
   end
 
+  def new
+    @article = Article.new
+  end
+
+  def create
+    @article = Article .new(article _params)
+    @article .user_id = session[:user_id]
+    if @article.save
+      @user.articles.push(@article )
+      redirect_to @user
+    else
+      redirect_to new_article_path
+    end
+  end
+
   def edit
     @article = Article.find(params[:article_id])
   end
@@ -14,7 +29,7 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    @article = Post.find(params[:post_id])
+    @article = Article.find(params[:post_id])
     @article.destroy
     redirect_to root_path
   end
