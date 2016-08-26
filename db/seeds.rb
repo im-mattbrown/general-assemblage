@@ -16,7 +16,7 @@ USERS = [
     last_name: "Switt",
     email: "switt@yahoo.com",
     user_name: "Switter",
-    image_url: "nil.jpg",
+    image_url: "https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-128.png",
     course_taken: "Web Development Immersive",
     city: "Chicago",
     password_digest: "$2a$10$NgAP4WW978uoGdgmkZ9xqeS0bUAm9We9TfylhUNP016BAE276znA2"
