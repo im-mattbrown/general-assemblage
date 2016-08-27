@@ -1,3 +1,46 @@
+<%= search_form_for @q do |g| %>
+  <div class="field">
+    <label for="">Search</label>
+    <%= g.text_field :title_or_content_or_city_or_article_type_cont %>
+  </div>
+  <%= g.submit "Search" %>
+<% end %>
+
+<table class="search-table">
+  <tr class="spacer">
+    <th>
+      <%= sort_link(@q, :title) %>
+    </th>
+    <th>
+      <%= sort_link(@q, :content) %>
+    </th>
+    <th>
+      <%= sort_link(@q, :city) %>
+    </th>
+    <th>
+      <%= sort_link(@q, :article_type) %>
+    </th>
+  </tr>
+
+  <% @search.each do |s| %>
+    <tr class="spacer">
+      <td>
+        <%= s.title %>
+      </td>
+      <td>
+        <%= s.content %>
+      </td>
+      <td>
+        <%= s.city %>
+      </td>
+      <td>
+        <%= s.article_type %>
+      </td>
+    </tr>
+  <% end %>
+
+</table>
+
 <% @articles.each do |f| %>
   <strong><%= f.title %></strong><br>
   <%= f.content %><br>
