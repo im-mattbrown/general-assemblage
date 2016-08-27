@@ -11,9 +11,10 @@
             </div>
          <p> <%= @article.content %> </p>
        </div>
-       <div class="card-action">
-         <%= link_to "See full post", show_article_path %>
-       </div>
+       <% @article.comments.each do |f| %>
+       <%= f.user_id%>
+       <%= f.content %><br>
+       <% end %>
      </div>
    </div>
  </div>

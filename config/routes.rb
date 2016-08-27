@@ -19,5 +19,8 @@ Rails.application.routes.draw do
   patch '/articles/:id', to: "articles#update", as: "update_article"
   delete '/articles/:id', to: "articles#destroy"
 
+  get '/articles/:id/comments/new', to: "comments#new", as: "article_comments"
+  post '/articles/:id/comments', to: "comments#create", as: "post_comment"
+
   get "*unmatched_route", to: "application#not_found"
 end
