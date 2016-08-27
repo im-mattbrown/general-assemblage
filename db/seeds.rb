@@ -15,7 +15,17 @@ USERS = [
     image_url: "https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-128.png",
     course_taken: "Web Development Immersive",
     city: "Chicago",
-    password_digest: "$2a$10$NgAP4WW978uoGdgmkZ9xqeS0bUAm9We9TfylhUNP016BAE276znA2"
+    password_digest: "$2a$10$NgAP4WW978uoGdgmkZ9xqeS0bUAm9We9TfylhUNP016BAE276znA2" #pw switt
+  },
+  {
+    first_name: "Aaron",
+    last_name: "Ray",
+    email: "ray@ray.com",
+    user_name: "aaronray",
+    image_url: "https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-128.png",
+    course_taken: "Web Development Immersive",
+    city: "San Francisco",
+    password_digest: "$2a$10$pmrsWBDkh2dkU5U2by3kFuKFV669TCcwzAnrfgLKCu5VfhAoIgGk2" #pw ray
   }
 ]
 

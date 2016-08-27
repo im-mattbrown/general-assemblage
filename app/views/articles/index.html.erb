@@ -42,6 +42,25 @@
 </table>
 
 <% @articles.each do |f| %>
+<div class="col s12 m7">
+   <h4 class="header"><%= f.title %></h4>
+   <div class="card horizontal">
+     <div class="card-stacked">
+       <div class="card-content">
+         <h6> <%= f.city %></h6>
+         <div class="chip chip_left">
+              <img src="http://www.eilatgordinlevitan.com/kurenets/k_pix/kunstler/060508_30_b.gif" alt="Contact Person">
+              <%= f.article_type %>
+            </div>
+         <p> <%= f.content %> </p>
+       </div>
+       <div class="card-action">
+         <%= link_to "See full post", show_article_path(f) %>
+       </div>
+     </div>
+   </div>
+ </div>
+
   <strong><%= f.title %></strong><br>
   <%= f.content %><br>
   Type: <%= f.article_type %><br>
