@@ -1,0 +1,19 @@
+
+<div class="col s12 m7">
+   <h4 class="header"><%= @article.title %></h4>
+   <div class="card horizontal">
+     <div class="card-stacked">
+       <div class="card-content">
+         <h6> <%= @article.city %></h6>
+         <div class="chip chip_left">
+              <img src="http://www.eilatgordinlevitan.com/kurenets/k_pix/kunstler/060508_30_b.gif" alt="Contact Person">
+              <%= @article.article_type %>
+            </div>
+         <p> <%= @article.content %> </p>
+       </div>
+       <div class="card-action">
+         <%= link_to "See full post", show_article_path %>
+       </div>
+     </div>
+   </div>
+ </div>
