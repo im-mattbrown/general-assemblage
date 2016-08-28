@@ -12,8 +12,8 @@
          <p> <%= @article.content %> </p>
        </div>
        <% @article.comments.each do |f| %>
-       <%= f.user_id%>
-       <%= f.content %><br>
+         <%= f.user.first_name %> says: <br>
+         <%= f.content %><br>
        <% end %>
      </div>
    </div>
