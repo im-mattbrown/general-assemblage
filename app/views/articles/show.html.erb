@@ -6,15 +6,28 @@
        <div class="card-content">
          <h6> <%= @article.city %></h6>
          <div class="chip chip_left">
-              <img src="http://www.eilatgordinlevitan.com/kurenets/k_pix/kunstler/060508_30_b.gif" alt="Contact Person">
-              <%= @article.article_type %>
-            </div>
-         <p> <%= @article.content %> </p>
+            <img src="http://www.eilatgordinlevitan.com/kurenets/k_pix/kunstler/060508_30_b.gif" alt="Contact Person">
+            <%= @article.article_type %>
+          </div>
+          <p> <%= @article.content %> </p>
        </div>
-       <% @article.comments.each do |f| %>
-         <%= f.user.first_name %> says: <br>
-         <%= f.content %><br>
-       <% end %>
+       <div class="card-action" id="delete_edit">
+         <%= link_to post_comment_path do %>
+           <span class="message">Message <i class="small material-icons">forum</i></span>
+         <% end %>
+         <%= link_to article_comments_path do %>
+           <span class="comment">Comment <i class="small material-icons">chat</i></span>
+         <% end %>
+        </div>
+        <table class="striped">
+          <tbody>
+            <% @article.comments.each do |f| %>
+            <tr>
+              <td><strong><%= f.user.first_name %> <%= f.user.last_name%></strong> <%= f.user.user_name %><small> posted <%= f.created_at.strftime("%b %d") %><br></small> <%= f.content %></td>
+            </tr>
+        <% end %>
+      </tbody>
+    </table>
      </div>
    </div>
  </div>
