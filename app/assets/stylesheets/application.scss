@@ -14,10 +14,7 @@
  *= require_self
  */
 @import "materialize";
-
-body {
-
-}
+@import "materialize/extras/nouislider";
 
 .ga-background {
   background-image: url(http://i.imgur.com/9G4Ar7a.png);
@@ -70,4 +67,15 @@ body {
   left: 40%;
   width: 20%;
   color: rgba(255,255,255,.8);
+}
+
+.profile-pic {
+  height: auto;
+  width: 200px;
+}
+.message{
+  color: grey;
+}
+.comment {
+  color: grey;
 }
