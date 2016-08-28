@@ -1,36 +1,39 @@
 <div class="feed-table">
+
   <%= search_form_for @q do |g| %>
-      <label for="">Search</label>
-      <%= g.text_field :title_or_content_or_city_or_article_type_cont %>
+    <label for="">Search Posts</label>
+    <%= g.text_field :title_or_content_or_city_or_article_type_cont %>
     <%= g.submit "Search" %>
   <% end %>
 
+  <div class="sort-links">
+    Sort by:
+    <%= sort_link(@q, :title) %>
+    <%= sort_link(@q, :content) %> /
+    <%= sort_link(@q, :city) %> /
+    <%= sort_link(@q, :article_type) %> /
+    <%= sort_link(@q, :created_at) %>
+  </div>
 
-<%= sort_link(@q, :title) %><br>
-<%= sort_link(@q, :content) %><br>
-<%= sort_link(@q, :city) %><br>
-<%= sort_link(@q, :article_type) %><br>
-<%= sort_link(@q, :created_at) %><br>
-
-
-<% @search.each do |s| %>
-<div class="col s12 m7">
-  <h5 class="header"><%= s.title %></h5>
-  <div class="card horizontal">
-    <div class="card-stacked">
-      <div class="card-content">
-        <h6> <%= s.city %></h6>
-        <div class="chip chip_left">
-          <img src="http://www.eilatgordinlevitan.com/kurenets/k_pix/kunstler/060508_30_b.gif" alt="Contact Person">
-          <%= s.article_type %>
+  <% @search.each do |s| %>
+    <div class="col s12 m7">
+      <h5 class="header"><%= s.title %></h5>
+      <div class="card horizontal">
+        <div class="card-stacked">
+          <div class="card-content">
+            <h6> <%= s.city %></h6>
+            <div class="chip chip_left">
+              <img src="http://www.eilatgordinlevitan.com/kurenets/k_pix/kunstler/060508_30_b.gif" alt="Contact Person">
+              <%= s.article_type %>
+            </div>
+            <p> <%= s.content %> </p>
+          </div>
+          <div class="card-action">
+            <%= link_to "See full post", show_article_path(s) %>
+          </div>
         </div>
-        <p> <%= s.content %> </p>
-      </div>
-      <div class="card-action">
-        <%= link_to "See full post", show_article_path(s) %>
       </div>
     </div>
-  </div>
-</div>
-<% end %>
+  <% end %>
+
 </div>
