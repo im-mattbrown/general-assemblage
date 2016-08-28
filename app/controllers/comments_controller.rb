@@ -13,16 +13,15 @@ class CommentsController < ApplicationController
 
   def create
     logged_in?
-    article = Article.find_by_id(params[:id])
+    @article = Article.find_by_id(params[:id])
     new_comment = Comment.new(comment_params)
     user_id = current_user[:id]
     new_comment[:user_id] = user_id
-    article.comments << new_comment
+    @article.comments << new_comment
     if new_comment.save
     redirect_to show_article_path
     end
   end
-
 
   private
     def comment_params
