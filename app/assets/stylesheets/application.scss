@@ -23,9 +23,9 @@
 }
 
 .nav-logo {
+  position: absolute;
   height: 64px;
   width: auto;
-  padding-right: 20px;
 }
 
 .edit-form {
@@ -103,4 +103,20 @@
 .nav-hover:hover {
   background-color: white;
   color: rgb(250, 69, 66);
+}
+
+.hamburger {
+  position: absolute;
+  left: 93%;
+}
+
+.site-header {
+  position: absolute;
+  left: 6%;
+  right: 90%;
+}
+
+.link {
+   @extend .red-text, .text-darken-1;
+   font-weight: bold;
 }
