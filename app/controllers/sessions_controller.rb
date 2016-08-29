@@ -8,17 +8,14 @@ class SessionsController < ApplicationController
     @user = User.confirm(user_params)
     if @user
       login(@user)
-      flash[:success] = "Successfully logged in."
       redirect_to articles_path
     else
-      flash[:error] = "Incorrect email or password."
       redirect_to login_path
     end
   end
 
   def destroy
     session[:user_id] = nil
-    flash[:notice] = "Successfully logged out."
     redirect_to root_path
   end
 

@@ -46,7 +46,13 @@
             <tbody>
               <% @article.comments.each do |f| %>
               <tr>
-                <td><strong><%= f.user.first_name %> <%= f.user.last_name%></strong> <%= f.user.user_name %><small> posted <%= f.created_at.strftime("%b %d") %><br></small> <%= f.content %></td>
+                <td>
+                    <strong><%= f.user.first_name %> <%= f.user.last_name%></strong>
+                    <%= f.user.user_name %>
+                    <small> posted <%= f.created_at.strftime("%b %d") %><br></small>
+                    <%= f.content %>
+                    <%= button_to "Edit", edit_comment_path(@article, f.id), method: :get, :class=>'waves-effect waves-red waves-ripple btn' %>
+                </td>
               </tr>
           <% end %>
         </tbody>
