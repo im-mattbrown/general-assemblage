@@ -18,15 +18,15 @@ class CommentsController < ApplicationController
     new_comment[:user_id] = user_id
     @article.comments << new_comment
     if new_comment.save
-    redirect_to show_article_path
+    redirect_to show_article_path(@article)
     end
   end
-  
+
   def edit
     @comment = Comment.find_by_id(params[:id])
     @article = Article.find_by_id(params[:article_id])
   end
-  
+
   def update
     @comment = Comment.find_by_id(params[:id])
     @article = Article.find_by_id(params[:article_id])
