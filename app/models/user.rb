@@ -2,6 +2,23 @@ class User < ApplicationRecord
   has_secure_password
   has_many :articles
   has_many :comments, :through => :articles
+  
+  validates :first_name, :last_name, :course_taken, :city,
+    presence: true,
+    length: { minimum: 1, maximum: 200 }
+
+  EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+
+  validates :email,
+    presence: true,
+    format: { with: EMAIL_REGEX},
+    uniqueness: true,
+    length: { maximum: 200 }
+    
+  validates :username,
+    presence: true,
+    uniqueness: true,
+    length: { minimum: 1, maximum: 20 }
 
   def self.confirm(params)
     @user = User.where("email ILIKE ?", params[:email]).first
