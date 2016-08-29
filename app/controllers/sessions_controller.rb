@@ -2,16 +2,16 @@ class SessionsController < ApplicationController
 
   def new
     @user = User.new
-    render :new
   end
 
   def create
-
     @user = User.confirm(user_params)
     if @user
       login(@user)
+      flash[:success] = "Successfully logged in."
       redirect_to articles_path
     else
+      flash[:error] = "Incorrect email or password."
       redirect_to login_path
     end
   end
