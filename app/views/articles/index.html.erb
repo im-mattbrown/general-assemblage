@@ -1,70 +1,42 @@
-<%= search_form_for @q do |g| %>
-  <div class="field">
-    <label for="">Search</label>
+<div class="feed-table">
+
+  <%= search_form_for @q do |g| %>
+    <label for="">Search Posts</label>
     <%= g.text_field :title_or_content_or_city_or_article_type_cont %>
-  </div>
-  <%= g.submit "Search" %>
-<% end %>
-
-<table class="search-table">
-  <tr class="spacer">
-    <th>
-      <%= sort_link(@q, :title) %>
-    </th>
-    <th>
-      <%= sort_link(@q, :content) %>
-    </th>
-    <th>
-      <%= sort_link(@q, :city) %>
-    </th>
-    <th>
-      <%= sort_link(@q, :article_type) %>
-    </th>
-  </tr>
-
-  <% @search.each do |s| %>
-    <tr class="spacer">
-      <td>
-        <%= s.title %>
-      </td>
-      <td>
-        <%= s.content %>
-      </td>
-      <td>
-        <%= s.city %>
-      </td>
-      <td>
-        <%= s.article_type %>
-      </td>
-    </tr>
+    <%= g.submit "Search", :class => 'waves-effect waves-light btn' %>
   <% end %>
 
-</table>
+  <div class="sort-links">
+    Sort by:
+    <%= sort_link(@q, :title) %>
+    <%= sort_link(@q, :content) %> /
+    <%= sort_link(@q, :city) %> /
+    <%= sort_link(@q, :article_type) %> /
+    <%= sort_link(@q, :created_at) %>
+  </div>
 
-<% @articles.each do |f| %>
-<div class="col s12 m7">
-   <h4 class="header"><%= f.title %></h4>
-   <div class="card horizontal">
-     <div class="card-stacked">
-       <div class="card-content">
-         <h6> <%= f.city %></h6>
-         <div class="chip chip_left">
+  <% @search.each do |s| %>
+    <div class="col s12 m7">
+      <div class="card horizontal">
+        <div class="card-stacked">
+          <div class="card-content">
+            <div class="chip chip_left">
               <img src="http://www.eilatgordinlevitan.com/kurenets/k_pix/kunstler/060508_30_b.gif" alt="Contact Person">
-              <%= f.article_type %>
+              <%= s.article_type %>
             </div>
-         <p> <%= f.content %> </p>
-       </div>
-       <div class="card-action">
-         <%= link_to "See full post", show_article_path(f) %>
-       </div>
-     </div>
-   </div>
- </div>
+            <h5 class="header"><%= s.title %> </h5>
+            Posted by: <%= s.user.first_name %> <%= s.user.last_name %><br>
+            City: <%= s.city %><br>
+            Posted at: <%= s.created_at.strftime("%b %e, %l:%M %p") %><br>
 
-  <strong><%= f.title %></strong><br>
-  <%= f.content %><br>
-  Type: <%= f.article_type %><br>
-  Location: <%= f.city %> <br>
-  Posted at: <%= f.created_at.localtime.strftime("%b %-d, %Y %H:%M") %> <br>
-  <p>
-<% end %>
+            <p> <%= s.content %> </p>
+          </div>
+          <div class="card-action">
+            <%= link_to "See full post", show_article_path(s) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+</div>

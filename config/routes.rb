@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get '/signup' => "users#new", as: "new_user"
   post '/users' => "users#create"
   get '/users/:id' => "users#show", as: "user"
-  get '/login' => "sessions#new", as: "new_session"
+  get '/login' => "sessions#new", as: "login"
   get '/logout' => "sessions#destroy"
   post '/sessions' => "sessions#create"
   get '/users/:id/edit' => "users#edit", as: "edit_user"
@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   get '/articles/:id/edit', to: 'articles#edit', as: "edit_article"
   patch '/articles/:id', to: "articles#update", as: "update_article"
   delete '/articles/:id', to: "articles#destroy"
+
+  get '/articles/:id/comments/new', to: "comments#new", as: "article_comments"
+  post '/articles/:id/comments', to: "comments#create", as: "post_comment"
 
   get "*unmatched_route", to: "application#not_found"
 end

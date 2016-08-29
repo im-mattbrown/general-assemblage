@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+before_action :logged_in?
 
   def index
     @articles = Article.all
@@ -7,6 +8,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    @comment = Comment.find_by_id(params[:comment_id])
     @article = Article.find_by_id(params[:id])
   end
 
