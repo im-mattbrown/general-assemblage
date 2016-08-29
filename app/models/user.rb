@@ -2,7 +2,7 @@ class User < ApplicationRecord
   has_secure_password
   has_many :articles
   has_many :comments, :through => :articles
-  
+
   validates :first_name, :last_name, :course_taken, :city,
     presence: true,
     length: { minimum: 1, maximum: 200 }
@@ -14,8 +14,8 @@ class User < ApplicationRecord
     format: { with: EMAIL_REGEX},
     uniqueness: true,
     length: { maximum: 200 }
-    
-  validates :username,
+
+  validates :user_name,
     presence: true,
     uniqueness: true,
     length: { minimum: 1, maximum: 20 }
