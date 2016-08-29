@@ -1,9 +1,11 @@
-<legend>Edit Article</legend>
-
+<div class="edit">
+<h5>Edit Article</h5>
 <%= form_for :article, url: update_article_path, method: :patch do |f| %>
-  Title: <%= f.text_field :title %><br>
-  Content: <%= f.text_field :content %><br>
-  Article Type: <%= f.collection_select :article_type, Article::TYPE, :to_s, :to_s, :include_blank => false, :prompt => "Select Option" %> <br>
-  Current City: <%= f.collection_select :city, Article::CITY, :to_s, :to_s, :include_blank => false, :prompt => "Select Option" %> <br>
-  <%= f.submit "Submit" %>
+Title: <%= f.text_field :title %><br>
+Content: <%= f.text_field :content %><br>
+Article Type: <%= f.collection_select :article_type, Article::TYPE, :to_s, :to_s, :include_blank => false, :prompt => "Select Option" %> <br>
+Current City: <%= f.collection_select :city, Article::CITY, :to_s, :to_s, :include_blank => false, :prompt => "Select Option" %> <br>
+<%= f.submit "Submit", :class=>'waves-effect waves-red waves-ripple btn' %>
 <% end %>
+<br />
+</div>
