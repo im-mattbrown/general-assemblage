@@ -1,0 +1,4 @@
+<%= form_for @comment, :url => update_comment_path do |f| %>
+<%= f.text_area :content %><br>
+<%= f.submit "Comment" %>
+<% end %>

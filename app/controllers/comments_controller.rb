@@ -8,11 +8,11 @@ class CommentsController < ApplicationController
     @user = current_user
     @comment = Comment.new
     @comment.user_id = @user.id
-    @article = Article.find_by_id(params[:id])
+    @article = Article.find_by_id(params[:article_id])
   end
 
   def create
-    @article = Article.find_by_id(params[:id])
+    @article = Article.find_by_id(params[:article_id])
     new_comment = Comment.new(comment_params)
     user_id = current_user[:id]
     new_comment[:user_id] = user_id
@@ -20,6 +20,18 @@ class CommentsController < ApplicationController
     if new_comment.save
     redirect_to show_article_path
     end
+  end
+  
+  def edit
+    @comment = Comment.find_by_id(params[:id])
+    @article = Article.find_by_id(params[:article_id])
+  end
+  
+  def update
+    @comment = Comment.find_by_id(params[:id])
+    @article = Article.find_by_id(params[:article_id])
+    @comment.update(comment_params)
+    redirect_to show_article_path(@article)
   end
 
   private
