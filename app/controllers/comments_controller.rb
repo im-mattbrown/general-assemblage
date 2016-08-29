@@ -12,7 +12,6 @@ class CommentsController < ApplicationController
   end
 
   def create
-    logged_in?
     @article = Article.find_by_id(params[:id])
     new_comment = Comment.new(comment_params)
     user_id = current_user[:id]

@@ -27,7 +27,8 @@
             <h5 class="header"><%= s.title %> </h5>
             Posted by: <%= s.user.first_name %> <%= s.user.last_name %><br>
             City: <%= s.city %><br>
-            Created at: <%= s.created_at %><br>
+            Posted at: <%= s.created_at.strftime("%b %e, %l:%M %p") %><br>
+
             <p> <%= s.content %> </p>
           </div>
           <div class="card-action">
