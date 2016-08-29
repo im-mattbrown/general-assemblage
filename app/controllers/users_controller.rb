@@ -6,6 +6,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by_id(params[:id])
+    @articles = Article.where(user_id: params[:id])
+    @comments = Comment.where(article_id: params[:id])
   end
 
   def new
@@ -14,6 +16,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
+    if @user.image_url == ""
+      @user.image_url = "http://imgur.com/a/FoI5q"
+    end
     redirect_to @user
   end
 
@@ -23,6 +28,9 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find_by_id(params[:id])
+    if @user.image_url == ""
+      @user.image_url = "http://imgur.com/a/FoI5q"
+    end
     @user.update(user_params)
     redirect_to @user
   end
