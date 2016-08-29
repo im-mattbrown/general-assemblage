@@ -1,33 +1,57 @@
 
-<div class="col s12 m7">
-   <div class="card horizontal">
-     <div class="card-stacked">
-       <div class="card-content">
-         <div class="chip chip_left">
-           <img src="http://www.eilatgordinlevitan.com/kurenets/k_pix/kunstler/060508_30_b.gif" alt="Contact Person">
-           <%= @article.article_type %>
-         </div>
-         <h4 class="header"><%= @article.title %></h4>
-         <h6>City: <%= @article.city %></h6>
-          <p> <%= @article.content %> </p>
-       </div>
-       <div class="card-action" id="delete_edit">
-         <%= link_to post_comment_path do %>
-           <span class="message">Message <i class="small material-icons">forum</i></span>
-         <% end %>
-         <%= link_to article_comments_path do %>
-           <span class="comment">Comment <i class="small material-icons">chat</i></span>
-         <% end %>
-        </div>
-        <table class="striped">
-          <tbody>
-            <% @article.comments.each do |f| %>
-            <tr>
-              <td><strong><%= f.user.first_name %> <%= f.user.last_name%></strong> <%= f.user.user_name %><small> posted <%= f.created_at.strftime("%b %d") %><br></small> <%= f.content %></td>
-            </tr>
+
+
+ <div class= "col-xs-10 col-xs-offset-1">
+  <div class="col-xs-3">
+    <div class="row">
+      <img src="<%= @article.user.image_url%>" class="product_img img-responsive img-circle">
+    </div>
+    <br>
+    <div class="row">
+      <h3> <%= link_to "#{@article.user.user_name}", "/users/#{@article.user_id}" %></h3>
+      <h3> <%= @article.user.first_name  %> <%= @article.user.last_name  %></h3>
+      <h4>Date Joined: <%= @article.user.created_at.localtime.strftime("%B #{@article.user.created_at.day.ordinalize}, %Y") %> </h4>
+      <h4> City: <%=  @article.user.city %> </h4>
+      <h4> Course taken: <%=  @article.user.course_taken %> </h4>
+      <br>
+      <div>
+        <% if current_user != nil && current_user.id == @article.user.id %>
+          <%= button_to "Edit Your Profile", edit_user_path(@article.user), method: :get, :class=>"ruby-link btn btn-info btn-primary btn-lg" %>
         <% end %>
-      </tbody>
-    </table>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col s12 m7">
+     <div class="card horizontal">
+       <div class="card-stacked">
+         <div class="card-content">
+           <div class="chip chip_left">
+             <img src="http://www.eilatgordinlevitan.com/kurenets/k_pix/kunstler/060508_30_b.gif" alt="Contact Person">
+             <%= @article.article_type %>
+           </div>
+           <h4 class="header"><%= @article.title %></h4>
+           <h6>City: <%= @article.city %></h6>
+            <p> <%= @article.content %> </p>
+         </div>
+         <div class="card-action" id="delete_edit">
+           <%= link_to post_comment_path do %>
+             <span class="message">Message <i class="small material-icons">forum</i></span>
+           <% end %>
+           <%= link_to article_comments_path do %>
+             <span class="comment">Comment <i class="small material-icons">chat</i></span>
+           <% end %>
+          </div>
+          <table class="striped">
+            <tbody>
+              <% @article.comments.each do |f| %>
+              <tr>
+                <td><strong><%= f.user.first_name %> <%= f.user.last_name%></strong> <%= f.user.user_name %><small> posted <%= f.created_at.strftime("%b %d") %><br></small> <%= f.content %></td>
+              </tr>
+          <% end %>
+        </tbody>
+      </table>
+       </div>
      </div>
    </div>
- </div>
