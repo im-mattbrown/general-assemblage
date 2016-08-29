@@ -4,7 +4,9 @@
     <label for="">Search Posts</label>
     <%= g.text_field :title_or_content_or_city_or_article_type_cont %>
     <%= g.submit "Search", :class => 'waves-effect waves-light btn' %>
+    <%= link_to "New Article", new_article_path, :class => 'waves-effect waves-light btn'%>
   <% end %>
+
 
   <div class="sort-links">
     Sort by:
