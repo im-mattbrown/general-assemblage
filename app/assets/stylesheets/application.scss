@@ -34,6 +34,7 @@
   left: 30%;
   width: 40%;
   color: rgba(255,255,255,.8);
+  line-height: 2px;
 }
 
 #splash-header {
@@ -97,4 +98,9 @@
 
 .waves-red:hover {
   background-color: rgb(250, 15, 15);
+}
+
+.nav-hover:hover {
+  background-color: white;
+  color: rgb(250, 69, 66);
 }
