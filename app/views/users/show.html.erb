@@ -1,15 +1,64 @@
 <div class="row">
-  <div class="col-xs-10 col-xs-offset-1">
-    <div class="col-xs-3">
-      <div class="row">
-        <img class="profile-pic" src="<%= @user.image_url%>">
-      </div>
+<div class="col s12 m4 l3">
+
+  <div class="row">
+    <img src="<%= @user.image_url%>" class="product_img img-responsive img-circle">
+  </div>
+  <br>
+  <div class="row">
+    <h4> <%= @user.user_name %></h4>
+    <p> <%= @user.first_name  %> <%= @user.last_name  %></p>
+    <p>Date Joined: <%= @user.created_at.localtime.strftime("%B #{@user.created_at.day.ordinalize}, %Y") %> </p>
+    <p> City: <%=  @user.city %> </p>
+    <p> Course taken: <%=  @user.course_taken %> </p>
     <br>
-    <div class="row">
-      <h3><%=  @user.user_name %> </h3>
-      <h5>Course: <%=  @user.course_taken %> </h5>
-      <h5>City: <%=  @user.city %> </h5>
-      <h5>Joined: <%= @user.created_at.localtime.strftime("%B #{@user.created_at.day.ordinalize}, %Y") %> </h5>
+    <div>
+      <% if current_user != nil && current_user.id == @user.id %>
+        <%= button_to "Edit Profile", edit_user_path(@user), method: :get, :class=>"ruby-link btn btn-info btn-primary btn-lg" %>
+      <% end %>
     </div>
   </div>
+</div>
+
+
+
+<div class="col s12 m8 l9">
+
+<%= link_to "New Article", new_article_path, :class => 'waves-effect waves-light btn'%>
+
+<%  @articles.each do |article| %>
+<div class="card horizontal">
+  <div class="card-stacked">
+    <div class="card-content">
+      <div class="chip chip_left">
+        <img src="http://www.eilatgordinlevitan.com/kurenets/k_pix/kunstler/060508_30_b.gif" alt="Contact Person">
+        <%= article.article_type %>
+      </div>
+      <h4 class="header"><%= article.title %></h4>
+      <h6>City: <%= article.city %></h6>
+       <p> <%= article.content %> </p>
+    </div>
+    <div class="card-action" id="delete_edit">
+      <%= link_to post_comment_path do %>
+        <span class="message">Message <i class="small material-icons">forum</i></span>
+      <%= link_to article_comments_path do %>
+        <span class="comment">Comment <i class="small material-icons">chat</i></span>
+      <%= link_to "Edit Article",
+      "/articles/#{article.id}/edit", method: :get, :class=>"waves-effect waves-light btn" %>
+      <%= link_to "Delete Article", "/articles/#{article.id}", method: :delete, :class=>"waves-effect waves-light btn" %>
+      <% end %>
+     </div>
+     <% end %>
+     <table class="striped">
+       <tbody>
+         <% article.comments.each do |f| %>
+         <tr>
+           <td><strong><%= f.user.first_name %> <%= f.user.last_name%></strong> <%= f.user.user_name %><small> posted <%= f.created_at.strftime("%b %d") %><br></small> <%= f.content %></td>
+         </tr>
+     <% end %>
+   </tbody>
+ </table>
+  </div>
+</div>
+<% end %>
 </div>

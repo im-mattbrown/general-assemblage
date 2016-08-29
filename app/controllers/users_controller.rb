@@ -6,6 +6,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by_id(params[:id])
+    @articles = Article.where(user_id: params[:id])
+    @comments = Comment.where(article_id: params[:id])
   end
 
   def new
