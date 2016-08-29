@@ -16,11 +16,6 @@ include AuthHelper
   end
 
   def create
-<<<<<<< HEAD
-    @user = User.create(user_params)
-    if @user.image_url == nil
-      @user.image_url = "http://imgur.com/a/FoI5q"
-=======
     @user = User.new(user_params)
     if @user.image_url == nil
       @user.image_url = "http://i.imgur.com/lkLgThE.png"
@@ -32,7 +27,6 @@ include AuthHelper
     else
       flash[:notice] = "There was an error with your sign up: #{@user.errors.full_messages.join(', ')}. Please, try again :P"
       redirect_to new_user_path
->>>>>>> dev
     end
   end
 
