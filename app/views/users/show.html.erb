@@ -27,13 +27,13 @@
 <%= link_to "New Article", new_article_path, :class => 'waves-effect waves-red waves-ripple btn' %>
 </div>
 
-  <% if @articles.count == 0 %>
+  <% if @user.articles.count == 0 %>
    <h4><%= "Welcome, #{current_user.first_name}!" %></h4>
    <p>You don't have any articles yet. To start press New Article button.</p>
 
 
 <% else %>
-<%  @articles.each do |article| %>
+<%  @user.articles.each do |article| %>
 <div class="card horizontal">
   <div class="card-stacked">
     <div class="card-content">
@@ -46,9 +46,9 @@
        <p> <%= article.content %> </p>
     </div>
     <div class="card-action" id="delete_edit">
-      <%= link_to post_comment_path do %>
+      <%= link_to post_comment_path(article.id) do %>
         <span class="message">Message <i class="small material-icons">forum</i></span>
-      <%= link_to article_comments_path do %>
+      <%= link_to article_comments_path(article.id) do %>
         <span class="comment">Comment <i class="small material-icons">chat</i></span>
 
 

@@ -7,8 +7,12 @@ include AuthHelper
 
   def show
     @user = User.find_by_id(params[:id])
-    @articles = Article.where(user_id: params[:id])
+    @articles = Article.where(user_id: params[:article_id])
     @comments = Comment.where(article_id: params[:id])
+
+    p "HELLO"
+    p @user
+    p "HELLO"
   end
 
   def new

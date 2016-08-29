@@ -8,7 +8,7 @@ before_action :logged_in?
   end
 
   def show
-    @comment = Comment.find_by_id(params[:comment_id])
+    @comment = Comment.find_by_id(params[:id])
     @article = Article.find_by_id(params[:article_id])
   end
 
@@ -27,19 +27,20 @@ before_action :logged_in?
   end
 
   def edit
-    @article = Article.find_by_id(params[:id])
+    @article = Article.find_by_id(params[:article_id])
   end
 
   def update
-    @article = Article.find_by_id(params[:id])
+    @article = Article.find_by_id(params[:article_id])
     @article.update(article_params)
     redirect_to articles_path
   end
 
   def destroy
-    @article = Article.find_by_id(params[:id])
+    @article = Article.find_by_id(params[:article_id])
+    @article.comments.destroy_all
     @article.destroy
-    redirect_to articles_path
+    redirect_to user_path(@article.user_id)
   end
 
   private
