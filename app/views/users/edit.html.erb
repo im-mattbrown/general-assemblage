@@ -9,7 +9,6 @@
   Course Taken at GA:<%= f.collection_select :course_taken, User::COURSE, :to_s, :to_s, :include_blank => false, :prompt => "Select Option" %> <br>
   Campus: <%= f.collection_select :city, User::CITIES, :to_s, :to_s, :include_blank => false, :prompt => "Select Option" %> <br />
   <%= f.submit "Submit", :class=>'waves-effect waves-red waves-ripple btn' %>
-
 <% end %>
 <br />
 </div>

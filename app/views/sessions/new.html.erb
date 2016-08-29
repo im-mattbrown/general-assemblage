@@ -5,7 +5,7 @@
     <%= form_for @user, url: '/sessions', method: 'post' do |f| %>
       Email: <%= f.text_field :email %><br>
       Password: <%= f.password_field :password %>
-      <%= f.submit "Submit", :class => 'waves-effect waves-light btn login' %>
+      <%= f.submit "Submit", :class => 'waves-effect waves-red btn' %>
     <% end %>
   </div>
 </body>
