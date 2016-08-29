@@ -7,11 +7,11 @@ class Article < ApplicationRecord
 
   validates :title,
     presence: true,
-    length: { minimum: 1, maximum: 200 }
+    length: { minimum: 1, maximum: 100 }
 
   validates :content,
     presence: true,
-    length: { minimum: 1, maximum: 10000 }
+    length: { minimum: 1, maximum: 2000 }
 
   TYPE = ["Help Wanted", "General Info", "Off Topic"];
   CITY = ["Atlanta", "Austin", "Boston", "Chicago", "Denver", "Hong Kong", "London", "Los Angeles", "Melbourne", "New York City", "San Francisco", "Singapore", "Sydney", "Washington DC"];
