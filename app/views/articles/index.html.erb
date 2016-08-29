@@ -3,8 +3,8 @@
   <%= search_form_for @q do |g| %>
     <label for="">Search Posts</label>
     <%= g.text_field :title_or_content_or_city_or_article_type_cont %>
-    <%= g.submit "Search", :class => 'waves-effect waves-light btn' %>
-    <%= link_to "New Article", new_article_path, :class => 'waves-effect waves-light btn'%>
+    <%= g.submit "Search", :class => 'waves-effect waves-red waves-ripple btn' %>
+    <%= link_to "New Article", new_article_path, :class => 'waves-effect waves-red waves-ripple btn'%>
   <% end %>
 
 

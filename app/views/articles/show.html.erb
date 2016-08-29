@@ -14,8 +14,8 @@
       <br>
       <div>
         <% if current_user != nil && current_user.id == @article.user.id %>
-          <%= button_to "Edit Profile", edit_user_path(@article.user), method: :get, :class=>"ruby-link btn btn-info btn-primary btn-lg" %>
-          
+          <%= button_to "Edit Profile", edit_user_path(@article.user), method: :get, :class=>'waves-effect waves-red waves-ripple btn' %>
+
         <% end %>
       </div>
     </div>

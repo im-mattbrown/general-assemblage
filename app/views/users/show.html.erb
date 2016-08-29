@@ -14,7 +14,7 @@
     <br>
     <div>
       <% if current_user != nil && current_user.id == @user.id %>
-        <%= button_to "Edit Profile", edit_user_path(@user), method: :get, :class=>"ruby-link btn btn-info btn-primary btn-lg" %>
+        <%= button_to "Edit Profile", edit_user_path(@user), method: :get, :class=>'waves-effect waves-red waves-ripple btn' %>
       <% end %>
     </div>
   </div>
@@ -24,7 +24,7 @@
 
 <div class="col s12 m8 l9">
 
-<%= link_to "New Article", new_article_path, :class => 'waves-effect waves-light btn'%>
+<%= link_to "New Article", new_article_path, :class => 'waves-effect waves-red waves-ripple btn' %>
 
 <%  @articles.each do |article| %>
 <div class="card horizontal">
@@ -44,8 +44,8 @@
       <%= link_to article_comments_path do %>
         <span class="comment">Comment <i class="small material-icons">chat</i></span>
       <%= link_to "Edit Article",
-      "/articles/#{article.id}/edit", method: :get, :class=>"waves-effect waves-light btn" %>
-      <%= link_to "Delete Article", "/articles/#{article.id}", method: :delete, :class=>"waves-effect waves-light btn" %>
+      "/articles/#{article.id}/edit", method: :get, :class=>'waves-effect waves-red waves-ripple btn' %>
+      <%= link_to "Delete Article", "/articles/#{article.id}", method: :delete, :class=>'waves-effect waves-red waves-ripple btn' %>
       <% end %>
      </div>
      <% end %>
