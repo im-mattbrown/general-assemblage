@@ -2,11 +2,9 @@ class SessionsController < ApplicationController
 
   def new
     @user = User.new
-    render :new
   end
 
   def create
-
     @user = User.confirm(user_params)
     if @user
       login(@user)
@@ -18,7 +16,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    flash[:notice] = "Successfully logged out."
     redirect_to root_path
   end
 
