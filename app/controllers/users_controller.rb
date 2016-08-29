@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+include AuthHelper
 
   def index
     @users = User.all
@@ -15,11 +16,18 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(user_params)
-    if @user.image_url == ""
-      @user.image_url = "http://imgur.com/a/FoI5q"
+    @user = User.new(user_params)
+    if @user.image_url == nil
+      @user.image_url = "http://i.imgur.com/lkLgThE.png"
     end
-    redirect_to @user
+    if @user.save
+      login(@user)
+      flash[:notice] = "You successfully signed up!"
+      redirect_to articles_path
+    else
+      flash[:notice] = "There was an error with your sign up: #{@user.errors.full_messages.join(', ')}. Please, try again :P"
+      redirect_to new_user_path
+    end
   end
 
   def edit
@@ -28,17 +36,27 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find_by_id(params[:id])
-    if @user.image_url == ""
-      @user.image_url = "http://imgur.com/a/FoI5q"
+    if @user.image_url == nil
+      @user.image_url = "http://i.imgur.com/lkLgThE.png"
     end
-    @user.update(user_params)
-    redirect_to @user
+    if auth_through_user
+      if @user.update(user_params)
+        flash[:success] = "Your profile was successfully updated"
+        redirect_to @user
+      else
+        render :edit
+      end
+    else
+      auth_fail("update other people's user information!", @user)
+    end
+
+
   end
 
 private
 
 def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :user_name, :image_url, :course_taken, :city, :password)
+    params.require(:user).permit(:first_name, :last_name, :email, :user_name, :course_taken, :city, :password)
 end
 
 end

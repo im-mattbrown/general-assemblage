@@ -1,8 +1,8 @@
 <div class="row">
 <div class="col s12 m4 l3">
-
+<br />
   <div class="row">
-    <img src="<%= @user.image_url%>" class="product_img img-responsive img-circle">
+    <img src="<%= @user.image_url%>" class="product_img img-responsive img-circle profile-pic">
   </div>
   <br>
   <div class="row">
@@ -19,13 +19,20 @@
     </div>
   </div>
 </div>
-
+<br />
 
 
 <div class="col s12 m8 l9">
-
+   <div class="center-align">
 <%= link_to "New Article", new_article_path, :class => 'waves-effect waves-red waves-ripple btn' %>
+</div>
 
+  <% if @articles.count == 0 %>
+   <h4><%= "Welcome, #{current_user.first_name}!" %></h4>
+   <p>You don't have any articles yet. To start press New Article button.</p>
+
+
+<% else %>
 <%  @articles.each do |article| %>
 <div class="card horizontal">
   <div class="card-stacked">
@@ -43,12 +50,18 @@
         <span class="message">Message <i class="small material-icons">forum</i></span>
       <%= link_to article_comments_path do %>
         <span class="comment">Comment <i class="small material-icons">chat</i></span>
-      <%= link_to "Edit Article",
-      "/articles/#{article.id}/edit", method: :get, :class=>'waves-effect waves-red waves-ripple btn' %>
-      <%= link_to "Delete Article", "/articles/#{article.id}", method: :delete, :class=>'waves-effect waves-red waves-ripple btn' %>
-      <% end %>
+
+
      </div>
+       <div >
+     <%= link_to "Edit Article",
+     "/articles/#{article.id}/edit", method: :get, :class=>'waves-effect waves-red waves-ripple btn' %>
+     <%= link_to "Delete Article", "/articles/#{article.id}", method: :delete, :class=>'waves-effect waves-red waves-ripple btn' %>
      <% end %>
+    </div>
+
+     <% end %>
+
      <table class="striped">
        <tbody>
          <% article.comments.each do |f| %>
@@ -60,5 +73,6 @@
  </table>
   </div>
 </div>
+<% end %>
 <% end %>
 </div>
