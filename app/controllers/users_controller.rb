@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
-    if @user.image_url == ""
+    if @user.image_url == nil
       @user.image_url = "http://imgur.com/a/FoI5q"
     end
     redirect_to @user

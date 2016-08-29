@@ -21,8 +21,8 @@ Rails.application.routes.draw do
 
   get '/articles/:id/comments/new', to: "comments#new", as: "article_comments"
   post '/articles/:id/comments', to: "comments#create", as: "post_comment"
-  get '/articles/:id/comments/:id/edit', to: "comments#edit", as: "edit_comment"
-  patch '/articles/:id/comments/:id', to: "comments#update", as: "update_comment"
+  get '/articles/:article_id/comments/:id/edit', to: "comments#edit", as: "edit_comment"
+  patch '/articles/:article_id/comments/:id', to: "comments#update", as: "update_comment"
 
   get "*unmatched_route", to: "application#not_found"
 end

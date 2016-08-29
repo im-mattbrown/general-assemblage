@@ -9,7 +9,7 @@ before_action :logged_in?
 
   def show
     @comment = Comment.find_by_id(params[:comment_id])
-    @article = Article.find_by_id(params[:id])
+    @article = Article.find_by_id(params[:article_id])
   end
 
   def new
