@@ -1,14 +1,13 @@
 <div class="edit">
 <h5>Edit Profile</h5>
 <%= form_for @user do |f| %>
-  First Name:<%= f.text_field :first_name %>
-  Last Name: <%= f.text_field :last_name %>
-  Email: <%= f.text_field :email %>
-  User Name: <%= f.text_field :user_name %>
-  Profile Picture: <%= f.text_field :image_url %>
-  Course Taken at GA:<%= f.collection_select :course_taken, User::COURSE, :to_s, :to_s, :include_blank => false, :prompt => "Select Option" %> <br>
-  Campus: <%= f.collection_select :city, User::CITIES, :to_s, :to_s, :include_blank => false, :prompt => "Select Option" %> <br />
-  <%= f.submit "Submit", :class=>'waves-effect waves-red waves-ripple btn' %>
+<%= f.text_field :first_name, :placeholder=>"First Name"%>
+<%= f.text_field :last_name, :placeholder=>"Last Name" %>
+<%= f.collection_select :course_taken, User::COURSE, :to_s, :to_s, :include_blank => false, :prompt => "Course Taken at GA(select)" %><br />
+<%= f.collection_select :city, User::CITIES, :to_s, :to_s, :include_blank => false, :prompt => "Campus(select)" %><br />
+<%= f.text_field :email, :placeholder=>"Email" %>
+<%= f.text_field :user_name, :placeholder=>"User Name" %>
+<%= f.text_field :image_url, :placeholder=>"Profile Picture" %>
+<%= f.submit "Submit", :class=>'waves-effect waves-red waves-ripple btn' %>
 <% end %>
-<br />
 </div>

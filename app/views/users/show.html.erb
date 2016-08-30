@@ -25,12 +25,12 @@
 <div class="col s12 m8 l9">
    <div class="center-align">
 <%= link_to "New Article", new_article_path, :class => 'waves-effect waves-red waves-ripple btn' %>
-</div>
+
 
   <% if @user.articles.count == 0 %>
    <h4><%= "Welcome, #{current_user.first_name}!" %></h4>
    <p>You don't have any articles yet. To start press New Article button.</p>
-
+</div>
 
 <% else %>
 <%  @user.articles.each do |article| %>
