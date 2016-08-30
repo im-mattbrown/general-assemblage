@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   get "/articles/:article_id", to: "articles#show", as: "show_article"
   get '/articles/:article_id/edit', to: 'articles#edit', as: "edit_article"
   patch '/articles/:article_id', to: "articles#update", as: "update_article"
-  delete '/articles/:article_id', to: "articles#destroy"
+  delete '/articles/:article_id', to: "articles#destroy", as: "delete_article"
 
   get '/articles/:article_id/comments/new', to: "comments#new", as: "article_comments"
   post '/articles/:article_id/comments', to: "comments#create", as: "post_comment"

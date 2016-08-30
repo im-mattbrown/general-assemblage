@@ -28,9 +28,10 @@
 </div>
 
   <% if @user.articles.count == 0 %>
+  <div class="center-align">
    <h4><%= "Welcome, #{current_user.first_name}!" %></h4>
    <p>You don't have any articles yet. To start press New Article button.</p>
-
+</div>
 
 <% else %>
 <%  @user.articles.each do |article| %>
@@ -40,39 +41,63 @@
       <div class="chip chip_left">
         <img src="http://i.imgur.com/qg94P70.png" alt="Contact Person">
         <%= article.article_type %>
-      </div>
-      <h4 class="header"><%= article.title %></h4>
-      <h6>City: <%= article.city %></h6>
-       <p> <%= article.content %> </p>
-    </div>
+        </div>
+        <strong>City:</strong> <%= article.city %><br />
+        <span class="right-align">
+          <strong><%= article.user.user_name %></strong>
+          <small>posted on <%= article.created_at.strftime("%b %e, %l:%M %p") %></small></span>
+        <h5 class="header"><%= article.title %> </h5>
+        <p> <%= article.content %> </p>
+        </div>
     <div class="card-action" id="delete_edit">
       <%= link_to post_comment_path(article.id) do %>
         <span class="message">Message <i class="small material-icons">forum</i></span>
       <%= link_to article_comments_path(article.id) do %>
         <span class="comment">Comment <i class="small material-icons">chat</i></span>
 
-
+        <% end %>
      </div>
-       <div >
+      <div>
      <%= link_to "Edit Article",
      "/articles/#{article.id}/edit", method: :get, :class=>'waves-effect waves-red waves-ripple btn' %>
      <%= link_to "Delete Article", "/articles/#{article.id}", method: :delete, :class=>'waves-effect waves-red waves-ripple btn' %>
      <% end %>
-    </div>
+   </div> <br />
 
-     <% end %>
+    <table class="striped">
+      <tbody>
+        <% article.comments.each do |f| %>
+        <tr>
+          <td>
+            <strong><%= f.user.user_name %></strong>
+            <small> commented on <%= f.created_at.strftime("%b %e, %l:%M %p") %></small>
+            <br />
+          <%= f.content %>
+                    <div>
+                      <% if current_user && current_user[:id] == f.user_id %>
+                  <%= link_to edit_comment_path(article, f.id), method: :get, :class=>'waves-effect waves-red waves-ripple btn' do %>
+                  <i class="small material-icons">edit</i>
+                  <% end %>
+                  <%= link_to delete_comment_path(article, f.id), method: :delete, :class=>'waves-effect waves-red waves-ripple btn' do %>
+                  <i class="small material-icons">delete</i>
+                <% end %>
+                <% end %>
+              </div>
 
-     <table class="striped">
-       <tbody>
-         <% article.comments.each do |f| %>
-         <tr>
-           <td><strong><%= f.user.first_name %> <%= f.user.last_name%></strong> <%= f.user.user_name %><small> posted <%= f.created_at.strftime("%b %d") %><br></small> <%= f.content %></td>
-         </tr>
-     <% end %>
-   </tbody>
- </table>
+
+
+
+            </td>
+          </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+
+
+<% end %>
   </div>
 </div>
 <% end %>
-<% end %>
+
 </div>

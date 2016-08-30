@@ -3,8 +3,8 @@
     <h5>Log In</h5>
 
     <%= form_for @user, url: '/sessions', method: 'post' do |f| %>
-      Email: <%= f.text_field :email %><br>
-      Password: <%= f.password_field :password %>
+      <%= f.text_field :email, :placeholder=>"Email" %>
+      <%= f.text_field :password, :placeholder=>"Password" %>
       <%= f.submit "Submit", :class => 'waves-effect waves-red btn' %>
     <% end %>
   </div>

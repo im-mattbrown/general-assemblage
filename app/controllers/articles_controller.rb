@@ -2,6 +2,7 @@ class ArticlesController < ApplicationController
 before_action :logged_in?
 
   def index
+<<<<<<< HEAD
     @articles = Article.paginate(page: params[:page], per_page: 15)
     @q = Article.ransack(params[:q])
     @search = @q.result.paginate(page: params[:page], per_page: 15)
@@ -9,6 +10,11 @@ before_action :logged_in?
       format.html
       format.js
     end
+=======
+    @q = Article.ransack(params[:q])
+    @q.sorts = 'created_at desc' if @q.sorts.empty?
+    @search = @q.result
+>>>>>>> development
   end
 
   def show

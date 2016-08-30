@@ -1,8 +1,7 @@
 <div class="feed-table" id="scroll-articles">
 
   <%= search_form_for @q do |g| %>
-    <label for="">Search Posts</label>
-    <%= g.text_field :title_or_content_or_city_or_article_type_cont %>
+    <%= g.text_field :title_or_content_or_city_or_article_type_cont, :placeholder=>"Search Posts" %>
     <%= g.submit "Search", :class => 'waves-effect waves-red waves-ripple btn' %>
     <%= link_to "New Article", new_article_path, :class => 'waves-effect waves-red waves-ripple btn'%>
   <% end %>
@@ -10,11 +9,10 @@
 
   <div class="sort-links">
     Sort by:
-    <%= sort_link(@q, :title) %>
-    <%= sort_link(@q, :content) %> /
+    <%= sort_link(@q, :title) %> /
     <%= sort_link(@q, :city) %> /
     <%= sort_link(@q, :article_type) %> /
-    <%= sort_link(@q, :created_at) %>
+    <%= sort_link(@q, :created_at, "Date & Time Posted") %>
   </div>
 
   <% @search.each do |s| %>
@@ -25,12 +23,14 @@
             <div class="chip chip_left">
               <img src="http://i.imgur.com/qg94P70.png" alt="Contact Person">
               <%= s.article_type %>
-            </div><span class="right-align">Posted by <%= s.user.first_name %> <%= s.user.last_name %> on: <%= s.created_at.strftime("%b %e, %l:%M %p") %></span>
+            </div>
+            <strong>City:</strong> <%= s.city %><br />
+            <span class="right-align">
+              <strong><%= s.user.user_name %></strong>
+              <small>posted on <%= s.created_at.strftime("%b %e, %l:%M %p") %></small></span>
             <h5 class="header"><%= s.title %> </h5>
-            <strong>City:</strong> <%= s.city %><br>
-
             <p> <%= s.content %> </p>
-          </div>
+            </div>
           <div class="card-action link">
             <%= link_to "See full post", show_article_path(s), :class => "link" %>
           </div>
