@@ -20,7 +20,7 @@ before_action :logged_in?
     @article = Article.new(article_params)
     @article.user_id = session[:user_id]
     if @article.save
-      redirect_to articles_path
+      redirect_to user_path(current_user)
     else
       redirect_to new_article_path
     end
@@ -33,7 +33,7 @@ before_action :logged_in?
   def update
     @article = Article.find_by_id(params[:article_id])
     @article.update(article_params)
-    redirect_to articles_path
+    redirect_to user_path(current_user)
   end
 
   def destroy
