@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
 
+  before_action :logged_in?
+
   def index
     @comments = Comment.all
   end
@@ -33,7 +35,7 @@ class CommentsController < ApplicationController
     @comment.update(comment_params)
     redirect_to show_article_path(@article)
   end
-  
+
   def destroy
     @comment = Comment.find_by_id(params[:id])
     @article = Article.find_by_id(params[:article_id])

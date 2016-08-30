@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
-before_action :logged_in?
+  before_action :logged_in?
+  before_action :find_article, only: [:show, :edit, :update, :destroy]
 
   def index
     @articles = Article.paginate(page: params[:page], per_page: 15)
@@ -10,7 +11,6 @@ before_action :logged_in?
 
   def show
     @comment = Comment.find_by_id(params[:id])
-    @article = Article.find_by_id(params[:article_id])
   end
 
   def new
@@ -28,23 +28,24 @@ before_action :logged_in?
   end
 
   def edit
-    @article = Article.find_by_id(params[:article_id])
   end
 
   def update
-    @article = Article.find_by_id(params[:article_id])
     @article.update(article_params)
     redirect_to user_path(current_user)
   end
 
   def destroy
-    @article = Article.find_by_id(params[:article_id])
     @article.comments.destroy_all
     @article.destroy
     redirect_to user_path(@article.user_id)
   end
 
   private
+  
+  def find_article
+    @article = Article.find_by_id(params[:article_id])
+  end
 
   def article_params
     params.require(:article).permit(:title, :content, :city, :article_type)
