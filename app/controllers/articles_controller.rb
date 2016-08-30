@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :logged_in?
   before_action :find_article, only: [:show, :edit, :update, :destroy]
+  before_action :assure_ownership!, only: [:edit, :update, :destroy]
 
   def index
     @articles = Article.paginate(page: params[:page], per_page: 15)
@@ -42,6 +43,14 @@ class ArticlesController < ApplicationController
   end
 
   private
+  
+  def current_user_is_op?
+    current_user.id == @article.user_id
+  end
+  
+  def assure_ownership!
+    redirect_to articles_path unless current_user_is_op?
+  end
   
   def find_article
     @article = Article.find_by_id(params[:article_id])
