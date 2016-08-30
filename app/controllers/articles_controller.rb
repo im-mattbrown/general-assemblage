@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
   include AuthHelper
+  include ArticlesHelper
+
   before_action :logged_in?
   before_action :find_article, only: [:show, :edit, :update, :destroy]
   before_action :assure_ownership!, only: [:edit, :update, :destroy]
@@ -69,10 +71,6 @@ class ArticlesController < ApplicationController
 
   def assure_ownership!
     redirect_to articles_path unless current_user_is_op?
-  end
-
-  def find_article
-    @article = Article.find_by_id(params[:article_id])
   end
 
   def article_params

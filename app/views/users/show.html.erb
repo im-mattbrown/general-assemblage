@@ -75,7 +75,8 @@
             <small> commented on <%= f.created_at.strftime("%b %e, %l:%M %p") %></small>
             <br />
           <%= f.content %>
-              <% if current_user != nil && current_user.id == @article.user.id %>
+
+              <% if auth_through_comment %>
                     <span class="edit-delete">  <% if current_user && current_user[:id] == f.user_id %>
                   <%= link_to edit_comment_path(article, f.id), method: :get, :class=>'waves-effect waves-red waves-ripple btn' do %>
                   <i class="small material-icons">edit</i>

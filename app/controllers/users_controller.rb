@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
+
   include AuthHelper
+
   before_action :logged_in?, except: [:index, :new, :create]
   before_action :find_user, only: [:show, :edit, :update]
 
@@ -8,12 +10,10 @@ class UsersController < ApplicationController
   end
 
   def show
+    @comment = Comment.find_by_id(params[:id])
     @article = Article.find_by_id(params[:id])
-    @user = User.find_by_id(params[:id])
     @articles_count = Article.where(:user_id => @user.id).length
-    p @articles_count
     @articles = Article.where(:user_id => @user.id).paginate(page: params[:page], per_page: 15).order('created_at DESC')
-    p "User_id", @user.id
   end
 
   def new
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
 
   def edit
     if !auth_through_user
-      auth_fail("not authorized to update that", articles_path)
+      auth_fail("Sorry, not authorized to update someone elses profile", articles_path)
     end
   end
 
