@@ -2,8 +2,8 @@ class ArticlesController < ApplicationController
 before_action :logged_in?
 
   def index
-    @articles = Article.all
     @q = Article.ransack(params[:q])
+    @q.sorts = 'created_at desc' if @q.sorts.empty?
     @search = @q.result
   end
 
