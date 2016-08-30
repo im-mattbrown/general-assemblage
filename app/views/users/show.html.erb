@@ -34,7 +34,7 @@
 </div>
 
 <% else %>
-<% @search.each do |article| %>
+<% @articles.each do |article| %>
 <div class="card horizontal">
   <div class="card-stacked">
     <div class="card-content">
@@ -56,10 +56,12 @@
         <span class="comment">Comment <i class="small material-icons">chat</i></span>
 
         <% end %>
-    <span class="edit-delete-article"> <%= link_to "Edit Article",
-     "/articles/#{article.id}/edit", method: :get, :class=>'waves-effect waves-red waves-ripple btn' %>
-     <%= link_to "Delete Article", "/articles/#{article.id}", method: :delete, :class=>'waves-effect waves-red waves-ripple btn' %>
-       </span>
+        <% if auth_through_user %>
+          <span class="edit-delete-article">
+            <%= link_to "Edit Article", edit_article_path(@article), method: :get, :class=>'waves-effect waves-red waves-ripple btn' %>
+            <%= link_to "Delete Article", "/articles/#{article.id}", method: :delete, :class=>'waves-effect waves-red waves-ripple btn' %>
+          </span>
+        <% end %>
      <% end %>
    </span>
 
@@ -73,6 +75,8 @@
             <small> commented on <%= f.created_at.strftime("%b %e, %l:%M %p") %></small>
             <br />
           <%= f.content %>
+
+              <% if auth_through_comment %>
                     <span class="edit-delete">  <% if current_user && current_user[:id] == f.user_id %>
                   <%= link_to edit_comment_path(article, f.id), method: :get, :class=>'waves-effect waves-red waves-ripple btn' do %>
                   <i class="small material-icons">edit</i>
@@ -81,6 +85,7 @@
                   <i class="small material-icons">delete</i>
                 <% end %>
                 <% end %>
+              <% end %>
               </span>
 
 
@@ -99,5 +104,7 @@
     <% end %>
 
 <% end %>
-<%= will_paginate @articles, :class => "digg_pagination"%>
+<% if @articles_count >= 15 %>
+  <%= will_paginate @articles, :class => "digg_pagination"%>
+<% end %>
 </div>

@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
-  
+
   include AuthHelper
-  
-  before_action :logged_in?, except: [:new, :create]
+
+  before_action :logged_in?, except: [:index, :new, :create]
   before_action :find_user, only: [:show, :edit, :update]
 
   def index
@@ -10,11 +10,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by_id(params[:id])
-    @articles = Article.paginate(page: params[:page], per_page: 15)
-    @q = Article.ransack(params[:q])
-    @q.sorts = 'created_at desc' if @q.sorts.empty?
-    @search = @q.result.paginate(page: params[:page], per_page: 15)
+    @comment = Comment.find_by_id(params[:id])
+    @article = Article.find_by_id(params[:id])
+    @articles_count = Article.where(:user_id => @user.id).length
+    @articles = Article.where(:user_id => @user.id).paginate(page: params[:page], per_page: 15).order('created_at DESC')
   end
 
   def new
@@ -23,13 +22,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.image_url == nil
-      @user.image_url = "http://i.imgur.com/lkLgThE.png"
+    if @user.image_url == ""
+      @user.image_url = "http://i.imgur.com/DMABUhJ.png"
     end
     if @user.save
       login(@user)
       flash[:notice] = "Congratulations, you have successfully signed up!"
-      redirect_to articles_path
+      redirect_to user_path(@user)
     else
       flash[:notice] = "Sorry, please try again.There are some issues:  #{@user.errors.full_messages.join(', ')}."
       redirect_to new_user_path
@@ -37,20 +36,24 @@ class UsersController < ApplicationController
   end
 
   def edit
+    if !auth_through_user
+      auth_fail("Sorry, not authorized to update someone elses profile", articles_path)
+    end
   end
 
   def update
-    if @user.image_url == nil
-      @user.image_url = "http://i.imgur.com/lkLgThE.png"
+    if @user.image_url == ""
+      @user.image_url = "http://i.imgur.com/DMABUhJ.png"
     end
     if auth_through_user
       if @user.update(user_params)
         flash[:notice] = "Your profile was successfully updated."
         redirect_to @user
       else
-        flash[:notice] = "Sorry, please try again.There are some issues:  #{@user.errors.full_messages.join(', ')}."
-        redirect_to edit_user_path
+        render :edit
       end
+      else
+        auth_fail("not authorized to update that", articles_path)
     end
   end
 
