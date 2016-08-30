@@ -1,8 +1,12 @@
 class CommentsController < ApplicationController
 
+<<<<<<< HEAD
   before_action :logged_in
   before_action :find_article, except: [:index]
   before_action :find_comment, only: [:edit, :update, :destroy]
+=======
+  before_action :logged_in?
+>>>>>>> dev
 
   def index
     @comments = Comment.all
@@ -31,7 +35,7 @@ class CommentsController < ApplicationController
     @comment.update(comment_params)
     redirect_to show_article_path(@article)
   end
-  
+
   def destroy
     @comment.destroy
     redirect_to show_article_path
