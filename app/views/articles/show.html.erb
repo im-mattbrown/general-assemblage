@@ -1,4 +1,5 @@
   <div class="row">
+    <br />
 <div class="col s12 m4 l3">
 
     <div class="row">
@@ -15,7 +16,6 @@
       <div>
         <% if current_user != nil && current_user.id == @article.user.id %>
           <%= button_to "Edit Profile", edit_user_path(@article.user), method: :get, :class=>'waves-effect waves-red waves-ripple btn' %>
-
         <% end %>
       </div>
     </div>
@@ -29,11 +29,15 @@
            <div class="chip chip_left">
              <img src="http://i.imgur.com/qg94P70.png" alt="Contact Person">
              <%= @article.article_type %>
-           </div>
-           <h4 class="header"><%= @article.title %></h4>
-           <h6>City: <%= @article.city %></h6>
-            <p> <%= @article.content %> </p>
-         </div>
+             </div>
+             <strong>City:</strong> <%= @article.city %><br />
+             <span class="right-align">
+               <strong><%= @article.user.user_name %></strong>
+               <small>posted on <%= @article.created_at.strftime("%b %e, %l:%M %p") %></small></span>
+             <h5 class="header"><%= @article.title %> </h5>
+             <p> <%= @article.content %> </p>
+             </div>
+
          <div class="card-action" id="delete_edit">
            <%= link_to post_comment_path do %>
              <span class="message">Message <i class="small material-icons">forum</i></span>
@@ -47,31 +51,35 @@
          <%= link_to "Edit Article",
         edit_article_path, method: :get, :class=>'waves-effect waves-red waves-ripple btn' %>
         <%= link_to "Delete Article", delete_article_path, method: :delete, :class=>'waves-effect waves-red waves-ripple btn' %>
+      </div> <br />
+
+        <table class="striped">
+          <tbody>
+            <% @article.comments.each do |f| %>
+            <tr>
+              <td>
+                <strong><%= f.user.user_name %></strong>
+                <small> commented on <%= f.created_at.strftime("%b %e, %l:%M %p") %></small>
+                <br />
+              <%= f.content %>
+              <div>
+                <% if current_user && current_user[:id] == f.user_id %>
+            <%= link_to edit_comment_path(@article, f.id), method: :get, :class=>'waves-effect waves-red waves-ripple btn' do %>
+            <i class="small material-icons">edit</i>
+            <% end %>
+            <%= link_to delete_comment_path(@article, f.id), method: :delete, :class=>'waves-effect waves-red waves-ripple btn' do %>
+            <i class="small material-icons">delete</i>
+          <% end %>
+          <% end %>
         </div>
-
-          <table class="striped">
-            <tbody>
-              <% @article.comments.each do |f| %>
-              <tr>
-                <td>
-                    <strong><%= f.user.first_name %> <%= f.user.last_name%></strong>
-                    <%= f.user.user_name %>
-                    <small> posted <%= f.created_at.strftime("%b %d") %><br></small>
-                    <%= f.content %>
-                    <% if current_user && current_user[:id] == f.user_id %>
-                        <div >
-                      <%= link_to "Edit Comment",
-                      edit_comment_path(@article, f.id), method: :get, :class=>'waves-effect waves-red waves-ripple btn' %>
-                      <%= link_to "Delete Comment", delete_comment_path(@article, f.id), method: :delete, :class=>'waves-effect waves-red waves-ripple btn' %>
-
-                     </div>
-                    <% end %>
                 </td>
               </tr>
           <% end %>
         </tbody>
       </table>
-       </div>
+
+</div>
+
      </div>
    </div>
 </div>
