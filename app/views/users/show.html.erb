@@ -51,16 +51,15 @@
       <%= link_to article_comments_path(article.id) do %>
         <span class="comment">Comment <i class="small material-icons">chat</i></span>
 
-
+        <% end %>
      </div>
-       <div >
+      <div>
      <%= link_to "Edit Article",
      "/articles/#{article.id}/edit", method: :get, :class=>'waves-effect waves-red waves-ripple btn' %>
      <%= link_to "Delete Article", "/articles/#{article.id}", method: :delete, :class=>'waves-effect waves-red waves-ripple btn' %>
      <% end %>
     </div>
 
-     <% end %>
 
      <table class="striped">
        <tbody>
