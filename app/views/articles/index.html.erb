@@ -1,8 +1,7 @@
 <div class="feed-table">
 
   <%= search_form_for @q do |g| %>
-    <label for="">Search Posts</label>
-    <%= g.text_field :title_or_content_or_city_or_article_type_cont %>
+    <%= g.text_field :title_or_content_or_city_or_article_type_cont, :placeholder=>"Search Posts" %>
     <%= g.submit "Search", :class => 'waves-effect waves-red waves-ripple btn' %>
     <%= link_to "New Article", new_article_path, :class => 'waves-effect waves-red waves-ripple btn'%>
   <% end %>
@@ -25,9 +24,11 @@
             <div class="chip chip_left">
               <img src="http://i.imgur.com/qg94P70.png" alt="Contact Person">
               <%= s.article_type %>
-            </div><span class="right-align">Posted by <%= s.user.first_name %> <%= s.user.last_name %> on: <%= s.created_at.strftime("%b %e, %l:%M %p") %></span>
+            </div>
+            <strong>City:</strong> <%= s.city %><br />
+            <span class="right-align">Posted by <%= s.user.first_name %> <%= s.user.last_name %> on: <%= s.created_at.strftime("%b %e, %l:%M %p") %></span>
             <h5 class="header"><%= s.title %> </h5>
-            <strong>City:</strong> <%= s.city %><br>
+
 
             <p> <%= s.content %> </p>
           </div>
