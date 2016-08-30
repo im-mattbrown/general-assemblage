@@ -7,7 +7,10 @@ include AuthHelper
 
   def show
     @user = User.find_by_id(params[:id])
-    @articles = Article.where(user_id: params[:article_id])
+    @articles = Article.paginate(page: params[:page], per_page: 15)
+    @q = Article.ransack(params[:q])
+    @q.sorts = 'created_at desc' if @q.sorts.empty?
+    @search = @q.result.paginate(page: params[:page], per_page: 15)
   end
 
   def new

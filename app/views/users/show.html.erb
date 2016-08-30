@@ -34,7 +34,7 @@
 </div>
 
 <% else %>
-<%  @user.articles.each do |article| %>
+<% @search.each do |article| %>
 <div class="card horizontal">
   <div class="card-stacked">
     <div class="card-content">
@@ -73,8 +73,7 @@
             <small> commented on <%= f.created_at.strftime("%b %e, %l:%M %p") %></small>
             <br />
           <%= f.content %>
-                    <div>
-                      <% if current_user && current_user[:id] == f.user_id %>
+                    <span class="edit-delete">  <% if current_user && current_user[:id] == f.user_id %>
                   <%= link_to edit_comment_path(article, f.id), method: :get, :class=>'waves-effect waves-red waves-ripple btn' do %>
                   <i class="small material-icons">edit</i>
                   <% end %>
@@ -82,7 +81,8 @@
                   <i class="small material-icons">delete</i>
                 <% end %>
                 <% end %>
-              </div>
+              </span>
+
 
 
 
@@ -95,9 +95,9 @@
 
 
 
-<% end %>
+    <% end %>
   </div>
 </div>
 <% end %>
-
+<%= will_paginate @articles, :class => "digg_pagination"%>
 </div>

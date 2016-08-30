@@ -21,7 +21,7 @@ before_action :logged_in?
     @article = Article.new(article_params)
     @article.user_id = session[:user_id]
     if @article.save
-      redirect_to user_path(current_user)
+      redirect_to articles_path
     else
       redirect_to new_article_path
     end
