@@ -25,12 +25,12 @@
               <%= s.article_type %>
             </div>
             <strong>City:</strong> <%= s.city %><br />
-            <span class="right-align">Posted by <%= s.user.user_name %> on: <%= s.created_at.strftime("%b %e, %l:%M %p") %></span>
+            <span class="right-align">
+              <strong><%= s.user.user_name %></strong>
+              <small>posted on <%= s.created_at.strftime("%b %e, %l:%M %p") %></small></span>
             <h5 class="header"><%= s.title %> </h5>
-
-
             <p> <%= s.content %> </p>
-          </div>
+            </div>
           <div class="card-action link">
             <%= link_to "See full post", show_article_path(s), :class => "link" %>
           </div>
