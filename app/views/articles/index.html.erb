@@ -1,4 +1,4 @@
-<div class="feed-table">
+<div class="feed-table" id="scroll-articles">
 
   <%= search_form_for @q do |g| %>
     <%= g.text_field :title_or_content_or_city_or_article_type_cont, :placeholder=>"Search Posts" %>
@@ -38,5 +38,7 @@
       </div>
     </div>
   <% end %>
-
+  <div id="infinite-scrolling">
+    <%= will_paginate @articles, :class => "digg_pagination"%>
+  </div>
 </div>
