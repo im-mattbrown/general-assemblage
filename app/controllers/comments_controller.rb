@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
 
+  before_action :logged_in
+
   def index
     @comments = Comment.all
   end

@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-before_action :logged_in?
+  before_action :logged_in?
 
   def index
     @q = Article.ransack(params[:q])

@@ -1,12 +1,14 @@
 class UsersController < ApplicationController
-include AuthHelper
-
+  include AuthHelper
+  
+  before_action :logged_in?
+  before_action :find_user, only: [:show, :edit, :update]
+  
   def index
     @users = User.all
   end
 
   def show
-    @user = User.find_by_id(params[:id])
     @articles = Article.where(user_id: params[:article_id])
   end
 
@@ -28,11 +30,9 @@ include AuthHelper
   end
 
   def edit
-    @user = User.find_by_id(params[:id])
   end
 
   def update
-    @user = User.find_by_id(params[:id])
     if @user.image_url == nil
       @user.image_url = "http://i.imgur.com/lkLgThE.png"
     end
@@ -44,9 +44,15 @@ include AuthHelper
       end
     end
   end
-private
-
-def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :user_name, :course_taken, :city, :password)
-end
+  
+  private
+  
+  def find_user
+    @user = User.find_by_id(params[:id])
+  end
+  
+  def user_params
+      params.require(:user).permit(:first_name, :last_name, :email, :user_name, :course_taken, :city, :password)
+  end
+  
 end
