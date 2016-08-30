@@ -23,9 +23,9 @@
 }
 
 .nav-logo {
+  position: absolute;
   height: 64px;
   width: auto;
-  padding-right: 20px;
 }
 
 .edit-form {
@@ -34,6 +34,14 @@
   left: 30%;
   width: 40%;
   color: rgba(255,255,255,.8);
+  line-height: 2px;
+}
+
+.edit {
+  position: absolute;
+  padding-top: 30px;
+  left: 30%;
+  width: 40%;
 }
 
 #splash-header {
@@ -88,5 +96,112 @@
   width: 60%;
 }
 .sort-links {
+  padding-top: 30px;
+}
+
+.waves-red {
+  background-color: rgb(250, 69, 66);
+}
+
+.waves-red:hover {
+  background-color: rgb(250, 15, 15);
+}
+
+.nav-hover:hover {
+  background-color: white;
+  color: rgb(250, 69, 66);
+}
+
+.hamburger {
+  position: absolute;
+  left: 93%;
+}
+
+.site-header {
+  position: absolute;
+  left: 6%;
+  right: 90%;
+}
+
+.link {
+   @extend .red-text, .text-darken-1;
+   font-weight: bold;
+}
+
+.digg_pagination {
+  background: white;
+  cursor: default;
+  /* self-clearing method: */
+}
+.digg_pagination a, .digg_pagination span, .digg_pagination em {
+  padding: 0.2em 0.5em;
+  display: block;
+  float: left;
+  margin-right: 1px;
+}
+.digg_pagination .disabled {
+  color: #999999;
+}
+
+.digg_pagination .current {
+  font-style: normal;
+  font-weight: bold;
+  background: rgb(250, 69, 66);
+  color: white;
+  border: 1px solid rgb(250, 69, 66);
+}
+
+.digg_pagination a {
+  text-decoration: none;
+  color: rgb(250, 69, 66);
+}
+
+.digg_pagination a:hover, .digg_pagination a:focus {
+  color: rgb(250, 69, 66);
+  border-color: rgb(250, 69, 66);
+}
+
+.digg_pagination .page_info {
+  background: rgb(250, 69, 66);
+  color: white;
+  padding: 0.4em 0.6em;
+  width: 22em;
+  margin-bottom: 0.3em;
+  text-align: center;
+}
+
+.digg_pagination .page_info b {
+  color: rgb(250, 69, 66);
+  background: rgb(250, 69, 66);
+  padding: 0.1em 0.25em;
+}
+
+.digg_pagination:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+* html .digg_pagination {
+  height: 1%;
+}
+
+*:first-child + html .digg_pagination {
+  overflow: hidden;
+}
+
+.edit-delete {
+  float: right;
+  margin-right: 40px;
+}
+
+.edit-delete-article {
+  float: right;
+  margin-right: 28px;
+}
+
+.article-show {
   padding-top: 30px;
 }
