@@ -1,12 +1,8 @@
 class CommentsController < ApplicationController
 
-<<<<<<< HEAD
   before_action :logged_in
   before_action :find_article, except: [:index]
   before_action :find_comment, only: [:edit, :update, :destroy]
-=======
-  before_action :logged_in?
->>>>>>> dev
 
   def index
     @comments = Comment.all
