@@ -34,9 +34,6 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    if !auth_through_article
-      auth_fail("not authorized to update that", articles_path)
-    end
   end
 
   def update
@@ -70,7 +67,7 @@ class ArticlesController < ApplicationController
   end
 
   def assure_ownership!
-    redirect_to articles_path unless current_user_is_op?
+    auth_fail("Not authorized", articles_path) unless current_user_is_op?
   end
 
   def article_params
