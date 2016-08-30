@@ -32,7 +32,7 @@
          <strong> City: </strong> 
          <%= @article.city %> <br />
          <span class="right-align">
-           <strong> <%= @article.user.user_name %> </strong>
+           <strong> <%= link_to "#{@article.user.user_name}", "/users/#{@article.user_id}" %> </strong>
            <small> posted on <%= @article.created_at.strftime("%b %e, %l:%M %p") %> </small>
          </span>
          <h5 class="header">
@@ -62,7 +62,7 @@
             <% @article.comments.each do |f| %>
             <tr>
               <td>
-                <strong><%= f.user.user_name %></strong>
+                <strong><%= link_to "#{f.user.user_name}", "/users/#{f.user_id}" %></strong>
                 <small> commented on <%= f.created_at.strftime("%b %e, %l:%M %p") %></small>
                 <br />
               <%= f.content %>
