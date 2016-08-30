@@ -1,4 +1,5 @@
   <div class="row">
+    <br />
 <div class="col s12 m4 l3">
 
     <div class="row">
@@ -29,11 +30,12 @@
            <div class="chip chip_left">
              <img src="http://i.imgur.com/qg94P70.png" alt="Contact Person">
              <%= @article.article_type %>
-           </div>
-           <h4 class="header"><%= @article.title %></h4>
-           <h6>City: <%= @article.city %></h6>
-            <p> <%= @article.content %> </p>
-         </div>
+             </div>
+             <strong>City:</strong> <%= @article.city %><br />
+             <span class="right-align">Posted by <%= @article.user.user_name %> on: <%= @article.created_at.strftime("%b %e, %l:%M %p") %></span>
+             <h5 class="header"><%= @article.title %> </h5>
+             <p> <%= @article.content %> </p>
+             </div>
          <div class="card-action" id="delete_edit">
            <%= link_to post_comment_path do %>
              <span class="message">Message <i class="small material-icons">forum</i></span>
