@@ -25,7 +25,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Congratulations, you have successfully signed up!"
       redirect_to articles_path
     else
-      flash[:notice] = "Sorry, please try again.Issues are as follows. #{@user.errors.full_messages.join(', ')}."
+      flash[:notice] = "Sorry, please try again.There are some issues:  #{@user.errors.full_messages.join(', ')}."
       redirect_to new_user_path
     end
   end
@@ -39,8 +39,10 @@ class UsersController < ApplicationController
     end
     if auth_through_user
       if @user.update(user_params)
+        flash[:notice] = "Your profile was successfully updated."
         redirect_to @user
       else
+        flash[:notice] = "Sorry, please try again.There are some issues:  #{@user.errors.full_messages.join(', ')}."
         render :edit
       end
     end
