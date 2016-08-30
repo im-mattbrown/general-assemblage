@@ -43,7 +43,7 @@ class UsersController < ApplicationController
         redirect_to @user
       else
         flash[:notice] = "Sorry, please try again.There are some issues:  #{@user.errors.full_messages.join(', ')}."
-        render :edit
+        redirect_to edit_user_path
       end
     end
   end
