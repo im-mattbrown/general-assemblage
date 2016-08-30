@@ -20,7 +20,11 @@ class CommentsController < ApplicationController
     new_comment[:user_id] = user_id
     @article.comments << new_comment
     if new_comment.save
+      flash[:notice] = "Congratulations! Your comment was successfully posted."
     redirect_to show_article_path(@article)
+    else
+      flash[:notice] = "Please enter your comment."
+      redirect_to article_comments_path
     end
   end
 
@@ -29,11 +33,13 @@ class CommentsController < ApplicationController
 
   def update
     @comment.update(comment_params)
+    flash[:notice] = "Your comment was successfully edited."
     redirect_to show_article_path(@article)
   end
 
   def destroy
     @comment.destroy
+    flash[:notice] = "Your comment was successfully deleted."
     redirect_to show_article_path
   end
 
