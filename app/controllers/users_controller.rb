@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   include AuthHelper
-
   before_action :logged_in?, except: [:new, :create]
   before_action :find_user, only: [:show, :edit, :update]
 
@@ -9,6 +8,11 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find_by_id(params[:id])
+    @articles = Article.paginate(page: params[:page], per_page: 15)
+    @q = Article.ransack(params[:q])
+    @q.sorts = 'created_at desc' if @q.sorts.empty?
+    @search = @q.result.paginate(page: params[:page], per_page: 15)
   end
 
   def new

@@ -34,7 +34,7 @@
 </div>
 
 <% else %>
-<%  @user.articles.each do |article| %>
+<% @search.each do |article| %>
 <div class="card horizontal">
   <div class="card-stacked">
     <div class="card-content">
@@ -49,20 +49,20 @@
         <h5 class="header"><%= article.title %> </h5>
         <p> <%= article.content %> </p>
         </div>
-    <div class="card-action" id="delete_edit">
+    <span class="card-action" id="delete_edit">
       <%= link_to post_comment_path(article.id) do %>
         <span class="message">Message <i class="small material-icons">forum</i></span>
       <%= link_to article_comments_path(article.id) do %>
         <span class="comment">Comment <i class="small material-icons">chat</i></span>
 
         <% end %>
-     </div>
-      <div>
-     <%= link_to "Edit Article",
+    <span class="edit-delete-article"> <%= link_to "Edit Article",
      "/articles/#{article.id}/edit", method: :get, :class=>'waves-effect waves-red waves-ripple btn' %>
      <%= link_to "Delete Article", "/articles/#{article.id}", method: :delete, :class=>'waves-effect waves-red waves-ripple btn' %>
+       </span>
      <% end %>
-   </div> <br />
+   </span>
+
 
     <table class="striped">
       <tbody>
@@ -73,8 +73,7 @@
             <small> commented on <%= f.created_at.strftime("%b %e, %l:%M %p") %></small>
             <br />
           <%= f.content %>
-                    <div>
-                      <% if current_user && current_user[:id] == f.user_id %>
+                    <span class="edit-delete">  <% if current_user && current_user[:id] == f.user_id %>
                   <%= link_to edit_comment_path(article, f.id), method: :get, :class=>'waves-effect waves-red waves-ripple btn' do %>
                   <i class="small material-icons">edit</i>
                   <% end %>
@@ -82,7 +81,8 @@
                   <i class="small material-icons">delete</i>
                 <% end %>
                 <% end %>
-              </div>
+              </span>
+
 
 
 
@@ -93,11 +93,11 @@
     </tbody>
   </table>
 
-
-
-<% end %>
-  </div>
 </div>
-<% end %>
+</div>
 
+    <% end %>
+
+<% end %>
+<%= will_paginate @articles, :class => "digg_pagination"%>
 </div>

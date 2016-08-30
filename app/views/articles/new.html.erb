@@ -1,19 +1,18 @@
 <div class="edit">
-<h5>New Article</h5>
-<%= form_for @article do |f| %>
-<label for="input_text">Article Type:</label>
- <%= f.collection_select :article_type, Article::TYPE, :to_s, :to_s, :include_blank => false, :prompt => "Select Option" %> <br>
-<label for="input_text">Current City: </label>
-<%= f.collection_select :city, Article::CITY, :to_s, :to_s, :include_blank => false, :prompt => "Select Option" %> <br>
-<div class="row">
-  <label for="input_text">Title:</label>
-  <%= f.text_field :title, :length=>"100" %>
-</div>
-<div class="row">
-  <label for="input_text">Content:</label>
-  <%= f.text_field :content, :length=>"1000" %>
-  <%= f.submit "Submit", :class=>'waves-effect waves-red waves-ripple btn' %>
-</div>
-<% end %>
-<br />
+  <h5>New Article</h5>
+    <%= form_for @article do |f| %>
+      <label for="input_text">Article Type:</label>
+       <%= f.collection_select :article_type, Article::TYPE, :to_s, :to_s, :include_blank => false, :prompt => "Select Option" %> <br>
+      <label for="input_text">Current City: </label>
+        <%= f.collection_select :city, Article::CITY, :to_s, :to_s, :include_blank => false, :prompt => "Select Option" %> <br>
+  <div class="row">
+    <label for="input_text">Title:</label>
+      <%= f.text_field :title, :length=>"100" %>
+  </div>
+  <div class="row">
+    <label for="input_text">Content:</label>
+      <%= f.text_field :content, :length=>"1000" %>
+      <%= f.submit "Submit", :class=>'waves-effect waves-red waves-ripple btn' %>
+  </div>
+    <% end %><br />
 </div>
