@@ -52,7 +52,8 @@
                     <small> posted <%= f.created_at.strftime("%b %d") %><br></small>
                     <%= f.content %>
                     <% if current_user && current_user[:id] == f.user_id %>
-                    <%= button_to "Edit", edit_comment_path(@article, f.id), method: :get, :class=>'waves-effect waves-red waves-ripple btn' %>
+                        <%= button_to "Edit", edit_comment_path(@article, f.id), method: :get, :class=>'waves-effect waves-red waves-ripple btn' %>
+                        <%= button_to "Delete", delete_comment_path(@article, f.id), method: :delete, :class=>'waves-effect waves-red waves-ripple btn' %>
                     <% end %>
                 </td>
               </tr>

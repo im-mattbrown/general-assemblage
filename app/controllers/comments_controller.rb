@@ -33,6 +33,13 @@ class CommentsController < ApplicationController
     @comment.update(comment_params)
     redirect_to show_article_path(@article)
   end
+  
+  def destroy
+    @comment = Comment.find_by_id(params[:id])
+    @article = Article.find_by_id(params[:article_id])
+    @comment.destroy
+    redirect_to show_article_path
+  end
 
   private
     def comment_params
