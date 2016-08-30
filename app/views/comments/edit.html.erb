@@ -1,10 +1,10 @@
 <div class="edit">
-<h5>Edit Comment</h5>
-<%= form_for @comment, :url => update_comment_path do |f| %>
-<div class="row">
-  <%= f.text_field :content, :length=>"500", :placeholder=>"Content" %>
-</div>
-<%= f.submit "Submit", :class=>'waves-effect waves-red waves-ripple btn' %>
-<% end %>
-<br />
+  <h5>Edit Comment</h5>
+    <%= form_for @comment, :url => update_comment_path do |f| %>
+  <div class="row">
+    <%= f.text_field :content, :length=>"500", :placeholder=>"Content" %>
+  </div>
+    <%= f.submit "Submit", :class=>'waves-effect waves-red waves-ripple btn' %>
+    <% end %>
+  <br />
 </div>
