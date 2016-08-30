@@ -10,11 +10,10 @@
 
   <div class="sort-links">
     Sort by:
-    <%= sort_link(@q, :title) %>
-    <%= sort_link(@q, :content) %> /
+    <%= sort_link(@q, :title) %> /
     <%= sort_link(@q, :city) %> /
     <%= sort_link(@q, :article_type) %> /
-    <%= sort_link(@q, :created_at) %>
+    <%= sort_link(@q, :created_at, "Date & Time Posted") %>
   </div>
 
   <% @search.each do |s| %>
