@@ -1,17 +1,17 @@
 <body class="ga-background">
   <div class="edit-form">
     <h5>Sign Up</h5>
-
     <%= form_for @user do |f| %>
-      First Name: <%= f.text_field :first_name %><br>
-      Last Name: <%= f.text_field :last_name %><br>
-      Email: <%= f.text_field :email %><br>
-      User Name: <%= f.text_field :user_name %><br>
-      Profile Picture: <%= f.text_field :image_url %><br>
-      Course Taken at GA:<%= f.collection_select :course_taken, User::COURSE, :to_s, :to_s, :include_blank => false, :prompt => "Select Option" %> <br>
-      Campus: <%= f.collection_select :city, User::CITIES, :to_s, :to_s, :include_blank => false, :prompt => "Select Option" %> <br />
-      Password: <%= f.password_field :password %>
-      <%= f.submit "Submit" %>
+    <%= f.text_field :first_name, :placeholder=>"First Name"%>
+    <%= f.text_field :last_name, :placeholder=>"Last Name" %>
+    <%= f.collection_select :course_taken, User::COURSE, :to_s, :to_s, :include_blank => false, :prompt => "Course Taken at GA(select)" %><br />
+    <%= f.collection_select :city, User::CITIES, :to_s, :to_s, :include_blank => false, :prompt => "Campus(select)" %><br />
+    <%= f.text_field :email, :placeholder=>"Email" %>
+    <%= f.text_field :user_name, :placeholder=>"User Name" %>
+    <%= f.text_field :image_url, :placeholder=>"Profile Picture" %>
+    <%= f.text_field :password, :placeholder=>"Password" %>
+    <%= f.submit "Submit", :class=>'waves-effect waves-red waves-ripple btn' %>
     <% end %>
-  </div>
+    </div>
+    <br />
 </body>

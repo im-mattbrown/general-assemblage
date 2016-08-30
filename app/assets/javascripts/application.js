@@ -19,4 +19,5 @@
 $(document).on('turbolinks:load', function(){
   $('select').material_select();
   $(".button-collapse").sideNav();
+  $('input#comment_content,input#article_title,input#article_content').characterCounter();
 });
