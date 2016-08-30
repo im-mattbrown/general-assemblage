@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   include AuthHelper
 
-  before_action :logged_in?
+  before_action :logged_in?, except: [:new, :create]
   before_action :find_user, only: [:show, :edit, :update]
 
   def index
