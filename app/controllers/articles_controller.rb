@@ -6,12 +6,11 @@ class ArticlesController < ApplicationController
     @articles = Article.paginate(page: params[:page], per_page: 15)
     @q = Article.ransack(params[:q])
     @q.sorts = 'created_at desc' if @q.sorts.empty?
-    @search = @q.result
+    @search = @q.result.paginate(page: params[:page], per_page: 15)
   end
 
   def show
     @comment = Comment.find_by_id(params[:id])
-    
   end
 
   def new
@@ -29,17 +28,14 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    
   end
 
   def update
-    
     @article.update(article_params)
     redirect_to user_path(current_user)
   end
 
   def destroy
-    
     @article.comments.destroy_all
     @article.destroy
     redirect_to user_path(@article.user_id)
