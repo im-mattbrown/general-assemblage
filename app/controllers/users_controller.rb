@@ -47,6 +47,6 @@ include AuthHelper
 private
 
 def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :user_name, :course_taken, :city, :password)
+    params.require(:user).permit(:first_name, :last_name, :email, :user_name, :course_taken, :city, :password, :image_url)
 end
 end
