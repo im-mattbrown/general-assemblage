@@ -1,14 +1,18 @@
-<div class="row article-show">
-  <div class="col s12 m4 l3">
+  <div class="row">
+    <br />
+<div class="col s12 m4 l3">
+
     <div class="row">
       <img src="<%= @article.user.image_url%>" class="product_img img-responsive img-circle profile-pic">
-    </div><br>
+    </div>
+    <br>
     <div class="row">
       <h4> <%= link_to "#{@article.user.user_name}", "/users/#{@article.user_id}" %></h4>
       <p> <%= @article.user.first_name  %> <%= @article.user.last_name  %></p>
       <p>Date Joined: <%= @article.user.created_at.localtime.strftime("%B #{@article.user.created_at.day.ordinalize}, %Y") %> </p>
       <p> City: <%=  @article.user.city %> </p>
-      <p> Course taken: <%=  @article.user.course_taken %> </p><br>
+      <p> Course taken: <%=  @article.user.course_taken %> </p>
+      <br>
       <div>
         <% if current_user != nil && current_user.id == @article.user.id %>
           <%= button_to "Edit Profile", edit_user_path(@article.user), method: :get, :class=>'waves-effect waves-red waves-ripple btn' %>
@@ -16,60 +20,68 @@
       </div>
     </div>
   </div>
-  <div class="col s12 m8 l9">
-    <div class="card horizontal">
-      <div class="card-stacked">
-        <div class="card-content">
-          <div class="chip chip_left">
-            <img src="http://i.imgur.com/qg94P70.png" alt="Contact Person">
-            <%= @article.article_type %>
-          </div>
-          <strong>City:</strong> <%= @article.city %><br />
-          <span class="right-align">
-            <strong><%= @article.user.user_name %></strong>
-            <small>posted on <%= @article.created_at.strftime("%b %e, %l:%M %p") %></small></span>
-            <h5 class="header"><%= @article.title %> </h5>
-            <p> <%= @article.content %> </p>
-        </div>
-          <span class="card-action" id="delete_edit">
-            <%= link_to post_comment_path do %>
-              <span class="message">Message <i class="small material-icons">forum</i></span>
-            <% end %>
-            <%= link_to article_comments_path do %>
-              <span class="comment">Comment <i class="small material-icons">chat</i></span>
-            <% end %>
-            <span class="edit-delete-article">
-              <%= link_to "Edit Article", edit_article_path, method: :get, :class=>'waves-effect waves-red waves-ripple btn' %>
-              <%= link_to "Delete Article", delete_article_path, method: :delete, :class=>'waves-effect waves-red waves-ripple btn' %>
-            </span>
-          </span>
 
-          <table class="striped">
-            <tbody>
-              <% @article.comments.each do |f| %>
-              <tr>
-                <td>
-                  <strong><%= f.user.user_name %></strong>
-                  <small> commented on <%= f.created_at.strftime("%b %e, %l:%M %p") %></small>
-                  <br />
-                <%= f.content %>
-                <span class="edit-delete">
-                  <% if current_user && current_user[:id] == f.user_id %>
-                    <%= link_to edit_comment_path(@article, f.id), method: :get, :class=>'waves-effect waves-red waves-ripple btn' do %>
-                      <i class="small material-icons">edit</i>
-                    <% end %>
-                    <%= link_to delete_comment_path(@article, f.id), method: :delete, :class=>'waves-effect waves-red waves-ripple btn' do %>
-                      <i class="small material-icons">delete</i>
-                    <% end %>
-                  <% end %>
-                </span>
+ <div class="col s12 m8 l9">
+   <div class="card horizontal">
+     <div class="card-stacked">
+       <div class="card-content">
+         <div class="chip chip_left">
+           <img src="http://i.imgur.com/qg94P70.png" alt="Contact Person">
+           <%= @article.article_type %>
+         </div>
+         <strong> City: </strong> 
+         <%= @article.city %> <br />
+         <span class="right-align">
+           <strong> <%= @article.user.user_name %> </strong>
+           <small> posted on <%= @article.created_at.strftime("%b %e, %l:%M %p") %> </small>
+         </span>
+         <h5 class="header">
+           <%= @article.title %> 
+         </h5>
+         <p> <%= @article.content %> </p>
+       </div>
+       <div class="card-action" id="delete_edit">
+         <%= link_to post_comment_path do %>
+           <span class="message">Message <i class="small material-icons">forum</i></span>
+         <% end %>
+         <%= link_to article_comments_path do %>
+           <span class="comment">Comment <i class="small material-icons">chat</i></span>
+           <% end %>
+       </div>
+
+       <div>
+         <% if current_user != nil && current_user.id == @article.user.id %>
+           <%= link_to "Edit Article", edit_article_path, method: :get, :class=>'waves-effect waves-red waves-ripple btn' %>
+           <%= link_to "Delete Article", delete_article_path, method: :delete, :class=>'waves-effect waves-red waves-ripple btn' %>
+         <% end %>
+       </div> 
+       <br />
+
+       <table class="striped">
+         <tbody>
+            <% @article.comments.each do |f| %>
+            <tr>
+              <td>
+                <strong><%= f.user.user_name %></strong>
+                <small> commented on <%= f.created_at.strftime("%b %e, %l:%M %p") %></small>
+                <br />
+              <%= f.content %>
+              <div>
+                <% if current_user && current_user[:id] == f.user_id %>
+            <%= link_to edit_comment_path(@article, f.id), method: :get, :class=>'waves-effect waves-red waves-ripple btn' do %>
+            <i class="small material-icons">edit</i>
+            <% end %>
+            <%= link_to delete_comment_path(@article, f.id), method: :delete, :class=>'waves-effect waves-red waves-ripple btn' do %>
+            <i class="small material-icons">delete</i>
+          <% end %>
+          <% end %>
+        </div>
                 </td>
               </tr>
-            <% end %>
-            </tbody>
-          </table>
-      </div>
-
-    </div>
-  </div>
+          <% end %>
+        </tbody>
+      </table>
+        </div>
+     </div>
+   </div>
 </div>
