@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   include AuthHelper
 
-  before_action :logged_in?
+  before_action :logged_in?, except: [:new, :create]
   before_action :find_user, only: [:show, :edit, :update]
 
   def index
@@ -22,8 +22,10 @@ class UsersController < ApplicationController
     end
     if @user.save
       login(@user)
+      flash[:notice] = "Congratulations, you have successfully signed up!"
       redirect_to articles_path
     else
+      flash[:notice] = "Sorry, please try again.Issues are as follows. #{@user.errors.full_messages.join(', ')}."
       redirect_to new_user_path
     end
   end
