@@ -1,15 +1,14 @@
 class UsersController < ApplicationController
   include AuthHelper
-  
+
   before_action :logged_in?
   before_action :find_user, only: [:show, :edit, :update]
-  
+
   def index
     @users = User.all
   end
 
   def show
-    @articles = Article.where(user_id: params[:article_id])
   end
 
   def new
@@ -44,16 +43,15 @@ class UsersController < ApplicationController
       end
     end
   end
-  
+
   private
-  
+
   def find_user
     @user = User.find_by_id(params[:id])
   end
-  
+
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :user_name, :course_taken, :city, :password, :image_url)
   end
-  
-end
 
+end
