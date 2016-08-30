@@ -2,9 +2,13 @@ class ArticlesController < ApplicationController
 before_action :logged_in?
 
   def index
-    @articles = Article.all
+    @articles = Article.paginate(page: params[:page], per_page: 15)
     @q = Article.ransack(params[:q])
-    @search = @q.result
+    @search = @q.result.paginate(page: params[:page], per_page: 15)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show
