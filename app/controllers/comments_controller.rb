@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  
+  include ArticlesHelper
 
   before_action :logged_in?
   before_action :find_article, except: [:index]
@@ -15,11 +17,10 @@ class CommentsController < ApplicationController
   end
 
   def create
-    new_comment = Comment.new(comment_params)
-    user_id = current_user[:id]
-    new_comment[:user_id] = user_id
-    @article.comments << new_comment
-    if new_comment.save
+    @comment = Comment.new(comment_params)
+    @comment[:user_id] = current_user[:id]
+    @article.comments << @comment
+    if @comment.save
       flash[:notice] = "Congratulations! Your comment was successfully posted."
     redirect_to show_article_path(@article)
     else
@@ -47,10 +48,6 @@ class CommentsController < ApplicationController
   
   def find_comment
     @comment = Comment.find_by_id(params[:id])
-  end
-  
-  def find_article
-    @article = Article.find_by_id(params[:article_id])
   end
   
   def comment_params
