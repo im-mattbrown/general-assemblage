@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  include AuthHelper
   before_action :logged_in?
   before_action :find_article, only: [:show, :edit, :update, :destroy]
   before_action :assure_ownership!, only: [:edit, :update, :destroy]
@@ -31,19 +32,33 @@ class ArticlesController < ApplicationController
   end
 
   def edit
+    if !auth_through_article
+      auth_fail("not authorized to update that", articles_path)
+    end
   end
 
   def update
-    @article.update(article_params)
+    if auth_through_article
+      if @article.update(article_params)
     flash[:notice] = "Your article was successfully edited."
     redirect_to user_path(current_user)
+      else
+        render :edit
+      end
+    else
+      auth_fail("not authorized to update that", articles_path)
+    end
   end
 
   def destroy
-    @article.comments.destroy_all
-    @article.destroy
-    flash[:notice] = "Your article was successfully deleted."
-    redirect_to user_path(@article.user_id)
+    if auth_through_article
+      @article.comments.destroy_all
+      @article.destroy
+      flash[:notice] = "Your article was successfully deleted."
+      redirect_to user_path(@article.user_id)
+    else
+      auth_fail("not authorized to delete that", articles_path)
+    end
   end
 
   private

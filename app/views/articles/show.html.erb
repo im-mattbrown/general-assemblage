@@ -38,10 +38,12 @@
             <%= link_to article_comments_path do %>
               <span class="comment">Comment <i class="small material-icons">chat</i></span>
             <% end %>
-            <span class="edit-delete-article">
-              <%= link_to "Edit Article", edit_article_path, method: :get, :class=>'waves-effect waves-red waves-ripple btn' %>
-              <%= link_to "Delete Article", delete_article_path, method: :delete, :class=>'waves-effect waves-red waves-ripple btn' %>
-            </span>
+            <% if auth_through_article %>
+              <span class="edit-delete-article">
+                <%= link_to "Edit Article", edit_article_path, method: :get, :class=>'waves-effect waves-red waves-ripple btn' %>
+                <%= link_to "Delete Article", delete_article_path, method: :delete, :class=>'waves-effect waves-red waves-ripple btn' %>
+              </span>
+            <% end %>
           </span>
 
           <table class="striped">
