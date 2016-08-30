@@ -27,7 +27,7 @@
        <div class="card-stacked">
          <div class="card-content">
            <div class="chip chip_left">
-             <img src="http://www.eilatgordinlevitan.com/kurenets/k_pix/kunstler/060508_30_b.gif" alt="Contact Person">
+             <img src="http://i.imgur.com/qg94P70.png" alt="Contact Person">
              <%= @article.article_type %>
            </div>
            <h4 class="header"><%= @article.title %></h4>
@@ -51,8 +51,10 @@
                     <%= f.user.user_name %>
                     <small> posted <%= f.created_at.strftime("%b %d") %><br></small>
                     <%= f.content %>
-                    <%= button_to "Edit", edit_comment_path(@article, f.id), method: :get, :class=>'waves-effect waves-red waves-ripple btn' %>
-                    <%= button_to "Delete", delete_comment_path(@article, f.id), method: :delete, :class=>'waves-effect waves-red waves-ripple btn' %>
+                    <% if current_user && current_user[:id] == f.user_id %>
+                        <%= button_to "Edit", edit_comment_path(@article, f.id), method: :get, :class=>'waves-effect waves-red waves-ripple btn' %>
+                        <%= button_to "Delete", delete_comment_path(@article, f.id), method: :delete, :class=>'waves-effect waves-red waves-ripple btn' %>
+                    <% end %>
                 </td>
               </tr>
           <% end %>
