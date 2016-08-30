@@ -22,8 +22,10 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     @article.user_id = session[:user_id]
     if @article.save
+      flash[:notice] = "Congratulations! Your article was successfully posted."
       redirect_to articles_path
     else
+        flash[:notice] = "Sorry, please try again.There are some issues:  #{@article.errors.full_messages.join(', ')}."
       redirect_to new_article_path
     end
   end
@@ -33,25 +35,27 @@ class ArticlesController < ApplicationController
 
   def update
     @article.update(article_params)
+    flash[:notice] = "Your article was successfully edited."
     redirect_to user_path(current_user)
   end
 
   def destroy
     @article.comments.destroy_all
     @article.destroy
+    flash[:notice] = "Your article was successfully deleted."
     redirect_to user_path(@article.user_id)
   end
 
   private
-  
+
   def current_user_is_op?
     current_user.id == @article.user_id
   end
-  
+
   def assure_ownership!
     redirect_to articles_path unless current_user_is_op?
   end
-  
+
   def find_article
     @article = Article.find_by_id(params[:article_id])
   end
