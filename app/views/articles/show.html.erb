@@ -22,10 +22,9 @@
   </div>
 
  <div class="col s12 m8 l9">
-
-     <div class="card horizontal">
-       <div class="card-stacked">
-         <div class="card-content">
+   <div class="card horizontal">
+     <div class="card-stacked">
+       <div class="card-content">
            <div class="chip chip_left">
              <img src="http://i.imgur.com/qg94P70.png" alt="Contact Person">
              <%= @article.article_type %>
@@ -48,10 +47,13 @@
          </div>
 
         <div>
-         <%= link_to "Edit Article",
+            <% if current_user != nil && current_user.id == @article.user.id %>
+                <%= link_to "Edit Article",
         edit_article_path, method: :get, :class=>'waves-effect waves-red waves-ripple btn' %>
-        <%= link_to "Delete Article", delete_article_path, method: :delete, :class=>'waves-effect waves-red waves-ripple btn' %>
-      </div> <br />
+                <%= link_to "Delete Article", delete_article_path, method: :delete, :class=>'waves-effect waves-red waves-ripple btn' %>
+            <% end %>
+        </div> 
+        <br />
 
         <table class="striped">
           <tbody>
