@@ -13,6 +13,7 @@ module AuthHelper
 
   def auth_fail(reason, redirect_path)
     flash[:notice] = reason
+    flash[:bruh] = true
     redirect_to redirect_path
   end
 end

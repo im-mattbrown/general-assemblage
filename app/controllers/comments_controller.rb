@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
 
   include ArticlesHelper
+  include AuthHelper
 
   before_action :logged_in?
   before_action :find_article, except: [:index]
@@ -11,7 +12,6 @@ class CommentsController < ApplicationController
   end
 
   def new
-    @user = current_user
     @comment = Comment.new
     @comment.user_id = @user.id
   end
@@ -30,6 +30,7 @@ class CommentsController < ApplicationController
   end
 
   def edit
+    comment_ownership!
   end
 
   def update
@@ -52,6 +53,15 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:content)
+  end
+
+  def current_user_is_op?
+    current_user.id == @comment.user_id
+  end
+
+  def comment_ownership!
+    flash[:bruh] = true
+    auth_fail("BOY IF YOU DON'T GET--", articles_path) unless current_user_is_op?
   end
 
 end
