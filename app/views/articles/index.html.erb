@@ -45,7 +45,12 @@
           <div class="card-action link">
             <%= link_to "See full post", show_article_path(s), :class => "link" %>
           </div>
+          <span class="card-action" id="delete_edit">
+          <%= link_to article_comments_path(s) do %>
+            <span class="comment">Comment <i class="small material-icons">chat</i></span>
 
+          <% end %>
+          </span>
           <ul class="collapsible" data-collapsible="accordion">
             <li>
           <div class="collapsible-header link">SEE ALL COMMENTS
