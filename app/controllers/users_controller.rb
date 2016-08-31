@@ -37,7 +37,7 @@ class UsersController < ApplicationController
 
   def edit
     if !auth_through_user
-      auth_fail("Sorry, not authorized to update someone elses profile", articles_path)
+      auth_fail("That ain't yours!", articles_path)
     end
   end
 
