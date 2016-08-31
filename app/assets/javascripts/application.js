@@ -25,4 +25,5 @@ $(document).on('turbolinks:load', function(){
       opacity: 0.5, // Opacity of modal background
     }
   );
+  $('.collapsible').collapsible();
 });
