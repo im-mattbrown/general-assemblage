@@ -26,4 +26,4 @@ $(document).on('turbolinks:load', function(){
     }
   );
   $('.collapsible').collapsible();
-});
+  });
