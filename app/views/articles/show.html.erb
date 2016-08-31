@@ -58,7 +58,6 @@
                 <small> commented on <%= f.created_at.strftime("%b %e, %l:%M %p") %></small>
                 <br />
               <%= f.content %>
-        <div>
           <% if current_user != nil && current_user.id == f.user_id %>
             <span class="edit-delete-article">
             <%= link_to edit_comment_path(@article, f.id), method: :get, :class=>'waves-effect waves-red waves-ripple btn' do %>
@@ -69,7 +68,6 @@
             <% end %>
           </span>
           <% end %>
-        </div>
                 </td>
               </tr>
           <% end %>
