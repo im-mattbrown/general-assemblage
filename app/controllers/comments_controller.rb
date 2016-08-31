@@ -12,6 +12,7 @@ class CommentsController < ApplicationController
   end
 
   def new
+    @user = current_user
     @comment = Comment.new
     @comment.user_id = @user.id
   end
