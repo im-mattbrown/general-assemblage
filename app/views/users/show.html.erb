@@ -78,6 +78,13 @@
             </span>
           <% end %>
  </span>
+ <span class="card-action" id="delete_edit">
+
+   <%= link_to article_comments_path(article) do %>
+     <span class="comment">Comment <i class="small material-icons">chat</i></span>
+
+   <% end %>
+ </span>
           <ul class="collapsible" data-collapsible="accordion">
             <li>
           <div class="collapsible-header link">SEE ALL COMMENTS
