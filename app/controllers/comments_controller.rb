@@ -62,7 +62,7 @@ class CommentsController < ApplicationController
 
   def comment_ownership!
     flash[:bruh] = true
-    auth_fail("BOY IF YOU DON'T GET--", articles_path) unless current_user_is_op?
+    auth_fail("U ain't slick smh", articles_path) unless current_user_is_op?
   end
 
 end

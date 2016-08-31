@@ -67,7 +67,7 @@ class ArticlesController < ApplicationController
   end
 
   def assure_ownership!
-    auth_fail("Not authorized", articles_path) unless current_user_is_op?
+    auth_fail("U ain't slick smh", articles_path) unless current_user_is_op?
   end
 
   def article_params
