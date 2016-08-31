@@ -1,57 +1,44 @@
-<div class="row">
-<!-- <div class="col s12 m4 l3"> -->
-
-<ul id="slide-out" class="side-nav">
-   <li><div class="userView">
-     <img class="background" src="https://ga-shop-production-herokuapp-com.global.ssl.fastly.net/assets/images/atlanta_1frpI.jpg">
-     <div class="row">
-       <img src="<%= @user.image_url%>" class="product_img img-responsive img-circle profile-pic">
-     </div>
-     <h4> <%= @user.user_name %></h4>
-     <%= @user.first_name  %> <%= @user.last_name  %><br>
-     City: <%=  @user.city %><br>
-     Course taken: <%=  @user.course_taken %>
-     <p>Date Joined: <%= @user.created_at.localtime.strftime("%B #{@user.created_at.day.ordinalize}, %Y") %> </p>
-     <% if current_user != nil && current_user.id == @user.id %>
-      <li><%= button_to "Edit Profile", edit_user_path(@user), method: :get, :class=>' btn-indent waves-effect waves-red waves-ripple btn' %></li>
-     <% end %>
-   </div>
- </li>
- </ul>
-
 <div class="feed-table">
   <div class="center-align">
-    <% if current_user != nil && current_user.id == @user.id %>
-      <%= button_to "Edit Profile", edit_user_path(@user), method: :get, :class=>'waves-effect waves-red waves-ripple btn' %>
-    <% end %>
+
   </div>
-  <div class="card horizontal">
-    <div class="card-stacked">
-      <div class="card-content">
-
-        <div class="row">
-          <img src="<%= @user.image_url%>" class="product_img img-responsive img-circle profile-pic">
-        </div>
-        <h4><%= @user.user_name %></h4>
-        <%= @user.first_name  %> <%= @user.last_name  %><br>
-        City: <%=  @user.city %><br>
-        Course taken: <%=  @user.course_taken %>
-        <p>Date Joined: <%= @user.created_at.localtime.strftime("%B #{@user.created_at.day.ordinalize}, %Y") %> </p>
-
-      </div>
-    </div>
-  </div>
-
-<div class="user-posts">
-  <div class="center-align">
-    <%= link_to "New Article", new_article_path, :class => 'waves-effect waves-red waves-ripple btn' %>
-  </div>
-
   <% if @user.articles.count == 0 %>
     <div class="center-align">
        <h4><%= "Welcome, #{current_user.first_name}!" %></h4>
        <p>You don't have any articles yet. To start press New Article button.</p>
     </div>
+    <div class="user-posts">
+      <div class="center-align">
+        <%= link_to "New Article", new_article_path, :class => 'waves-effect waves-red waves-ripple btn' %>
+      </div><br />
+  <div class="card horizontal">
+    <div class="card-stacked">
+      <div class="card-content col s12">
+
+        <div class="row">
+          <div class="col s6">
+          <img src="<%= @user.image_url%>" class="product_img img-responsive img-circle profile-pic">
+
+        </div>
+        <div class="col s6">
+        <h4><%= @user.user_name %></h4>
+        <%= @user.first_name  %> <%= @user.last_name  %><br>
+        City: <%=  @user.city %><br>
+        Course taken: <%=  @user.course_taken %>
+        <p>Date Joined: <%= @user.created_at.localtime.strftime("%B #{@user.created_at.day.ordinalize}, %Y") %> </p>
+<br />
+        <% if current_user != nil && current_user.id == @user.id %>
+          <%= button_to "Edit Profile", edit_user_path(@user), method: :get, :class=>'waves-effect waves-red waves-ripple btn' %>
+        <% end %>
+      </div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
   <% else %>
   <% @articles.each do |article| %>
     <div class="card horizontal">
@@ -77,6 +64,13 @@
               <%= link_to "Delete Article", "/articles/#{article.id}", method: :delete, :class=>'waves-effect waves-red waves-ripple btn' %>
             </span>
           <% end %>
+ </span>
+ <span class="card-action" id="delete_edit">
+
+   <%= link_to article_comments_path(article) do %>
+     <span class="comment">Comment <i class="small material-icons">chat</i></span>
+
+   <% end %>
  </span>
           <ul class="collapsible" data-collapsible="accordion">
             <li>
@@ -132,5 +126,4 @@
 <% if @articles_count >= 15 %>
   <%= will_paginate @articles, :class => "digg_pagination"%>
 <% end %>
-</div>
 </div>
