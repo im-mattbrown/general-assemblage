@@ -36,9 +36,6 @@
             <p> <%= @article.content %> </p>
         </div>
           <span class="card-action" id="delete_edit">
-            <%= link_to post_comment_path do %>
-              <span class="message">Message <i class="small material-icons">forum</i></span>
-            <% end %>
             <%= link_to article_comments_path do %>
               <span class="comment">Comment <i class="small material-icons">chat</i></span>
             <% end %>
