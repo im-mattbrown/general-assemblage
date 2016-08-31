@@ -29,7 +29,7 @@
        </ul>
        <ul class="side-nav" id="mobile-demo">
          <% if current_user %>
-           <li><span><%= link_to "Welcome, #{current_user.first_name}!", current_user %></span></li>
+           <li><span><%= link_to "Profile", current_user, :class => 'nav-hover' %></span></li>
            <li><%= link_to "Feed", articles_path %></li>
            <li><%= link_to "Logout", "/logout" %></li>
          <% else %>
@@ -42,9 +42,15 @@
 
    <%= yield %>
    <% if notice %>
-     <script type="text/javascript">
-       Materialize.toast('<%= notice %>', 6000)
-     </script>
+     <% if flash[:bruh] %>
+       <script type="text/javascript">
+         Materialize.toast('<%= notice %>', 6000, 'bruh')
+       </script>
+    <% else %>
+       <script type="text/javascript">
+         Materialize.toast('<%= notice %>', 6000)
+       </script>
    <% end %>
+  <% end %>
   </body>
 </html>

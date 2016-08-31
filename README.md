@@ -1,25 +1,28 @@
-# General Assemblage
+# General Assembláge
 
-General Assemblage is a social networking tool that connects General Assembly students across disciplines and locations to facilitate learning and creating collaboration. This is a full stack rails app served on Heroku Cloud Application Platform featuring the following technologies.
+[General Assembláge](https://general-assemblage.herokuapp.com/) is a social networking tool that connects General Assembly alumni across all immersive courses and all General Assembly locations to facilitate learning and to foster collaboration. This is a full stack Ruby on Rails application deployed on Heroku's Cloud Application Platform implementing a plethora of technologies.
 
 ##### User Example Login Information
 - email : student@ga.com
 - password : assemble
 
 ### Technologies Used
-
+General Assembláge implements the following technologies:
 * Ruby on Rails
-* HTML/CSS
-* Materialize, SCSS
+* HTML/CSS/JavaScript
+* jQuery
+* PostgreSQL
+* Materialize
+* Sass
 * Heroku
-* Postgresql
-
-### Gems(planned as of now)
 * Ransack
-* Social Share Button
-* Materialize Sass
-* acts_as_follower
 * will_paginate
+* bcrypt
+
+### Planned features
+* Social Share Button
+* Pretty routes
+* Notification system
 
 #### Wireframes / Mockups
 

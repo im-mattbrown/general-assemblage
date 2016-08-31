@@ -20,4 +20,10 @@ $(document).on('turbolinks:load', function(){
   $('select').material_select();
   $(".button-collapse").sideNav();
   $('input#comment_content,input#article_title,input#article_content').characterCounter();
-});
+  $('.modal-trigger').leanModal({
+      dismissible: true, // Modal can be dismissed by clicking outside of the modal
+      opacity: 0.5, // Opacity of modal background
+    }
+  );
+  $('.collapsible').collapsible();
+  });
