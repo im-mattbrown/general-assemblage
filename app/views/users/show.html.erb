@@ -49,10 +49,9 @@
         <h5 class="header"><%= article.title %> </h5>
         <p> <%= article.content %> </p>
         </div>
-    <span class="card-action" id="delete_edit">
-      <%= link_to article_comments_path(article.id) do %>
-        <span class="comment">Comment <i class="small material-icons">chat</i></span>
-      <% end %>
+        
+     <span class="card-action" id="delete_edit">
+      <%= link_to "See full post", show_article_path(article), :class => "link" %>
       <% if auth_through_user %>
         <span class="edit-delete-article">
           <%= link_to "Edit Article", edit_article_path(@article), method: :get, :class=>'waves-effect waves-red waves-ripple btn' %>
@@ -60,37 +59,7 @@
         </span>
       <% end %>
      </span>
-    <table class="striped">
-      <tbody>
-        <% article.comments.each do |f| %>
-        <tr>
-          <td>
-            <strong><%= f.user.user_name %></strong>
-            <small> commented on <%= f.created_at.strftime("%b %e, %l:%M %p") %></small>
-            <br />
-          <%= f.content %>
 
-              <% if auth_through_comment %>
-                    <span class="edit-delete">  <% if current_user && current_user[:id] == f.user_id %>
-                  <%= link_to edit_comment_path(article, f.id), method: :get, :class=>'waves-effect waves-red waves-ripple btn' do %>
-                  <i class="small material-icons">edit</i>
-                  <% end %>
-                  <%= link_to delete_comment_path(article, f.id), method: :delete, :class=>'waves-effect waves-red waves-ripple btn' do %>
-                  <i class="small material-icons">delete</i>
-                <% end %>
-                <% end %>
-              <% end %>
-              </span>
-
-
-
-
-
-            </td>
-          </tr>
-      <% end %>
-    </tbody>
-  </table>
 
 </div>
 </div>
