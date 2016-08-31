@@ -42,9 +42,15 @@
 
    <%= yield %>
    <% if notice %>
-     <script type="text/javascript">
-       Materialize.toast('<%= notice %>', 6000)
-     </script>
+     <% if flash[:bruh] %>
+       <script type="text/javascript">
+         Materialize.toast('<%= notice %>', 6000, 'bruh')
+       </script>
+    <% else %>
+       <script type="text/javascript">
+         Materialize.toast('<%= notice %>', 6000)
+       </script>
    <% end %>
+  <% end %>
   </body>
 </html>

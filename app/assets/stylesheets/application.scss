@@ -48,7 +48,7 @@
   position: absolute;
   top: 20%;
   color: rgba(255,255,255,.4);
-  left: 5%;
+  left: 30%;
 }
 
 #splash-text {
@@ -204,4 +204,25 @@
 
 .article-show {
   padding-top: 30px;
+}
+
+.modal-trigger{
+  position: absolute;
+  top: 80%;
+  left: 40%;
+}
+
+#modal1 {
+  width: 90%;
+}
+
+.title {
+  color: rgb(250, 69, 66);
+}
+
+.bruh {
+  background-image: url("https://i2.wp.com/i2.kym-cdn.com/entries/icons/original/000/020/316/CYkT9pKUEAAKXjz.jpg");
+  background-size: cover;
+  height: 500px;
+  width: 500px;
 }
