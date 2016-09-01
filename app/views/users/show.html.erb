@@ -52,7 +52,7 @@
             <%= link_to "See full post", show_article_path(article), :class => "link" %>
             <% if auth_through_user %>
               <span class="edit-delete-article">
-                <%= link_to "Edit Post", edit_article_path(@article), method: :get, :class=>'waves-effect waves-red waves-ripple btn' %>
+                <%= link_to "Edit Post", edit_article_path(article), method: :get, :class=>'waves-effect waves-red waves-ripple btn' %>
                 <%= link_to "Delete Post", "/articles/#{article.id}", method: :delete, :class=>'waves-effect waves-red waves-ripple btn' %>
               </span>
             <% end %>
