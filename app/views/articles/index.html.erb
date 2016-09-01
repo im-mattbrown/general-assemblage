@@ -1,14 +1,14 @@
 <div class="col s12 feed-table" id="scroll-articles">
 
   <div class="row">
-    <%= link_to "New Article", new_article_path, :class => 'offset-s3 col s6 waves-effect waves-red waves-ripple btn'%>
+    <%= link_to "New Post", new_article_path, :class => 'offset-s3 col s6 waves-effect waves-red waves-ripple btn'%>
   </div>
 
   <%= search_form_for @q do |g| %>
     <%= g.text_field :title_or_content_or_city_or_article_type_cont, :placeholder=>"Search Posts" %>
     <div class="row">
       <div class="col s6">
-        <%= g.collection_select :article_type_cont, Article::TYPE, :to_s, :to_s, :include_blank => false, :prompt => "Filter by Article Type" %><br />
+        <%= g.collection_select :article_type_cont, Article::TYPE, :to_s, :to_s, :include_blank => false, :prompt => "Filter by Post Type" %><br />
       </div>
       <div class="col s6">
         <%= g.collection_select :city_cont, Article::CITY, :to_s, :to_s, :include_blank => false, :prompt => "Filter by City" %><br />
