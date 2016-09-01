@@ -54,7 +54,7 @@
                 <div class="collapsible-body">
                   <table class="striped">
                     <tbody>
-                      <% s.comments.each do |f| %>
+                      <% s.comments.order('created_at DESC').each do |f| %>
                         <tr>
                           <td>
                             <strong><%= link_to "#{f.user.user_name}", "/users/#{f.user_id}" %></strong>
