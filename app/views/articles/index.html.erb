@@ -1,10 +1,7 @@
 <div class="col s12 feed-table" id="scroll-articles">
-
   <div class="row">
-      <%= link_to "New Article", new_article_path, :class => 'offset-s3 col s6 waves-effect waves-red waves-ripple btn'%>
+    <%= link_to "New Article", new_article_path, :class => 'offset-s3 col s6 waves-effect waves-red waves-ripple btn'%>
   </div>
-
-
   <%= search_form_for @q do |g| %>
     <%= g.text_field :title_or_content_or_city_or_article_type_cont, :placeholder=>"Search Posts" %>
     <div class="row">
@@ -17,7 +14,6 @@
       <%= g.submit "Search", :class => 'offset-s4 col s4 waves-effect waves-red waves-ripple btn' %>
     </div>
   <% end %>
-
   <div class="row">
     <div class="left-sort-links">
       Sort by:
@@ -25,7 +21,6 @@
       <%= sort_link(@q, :created_at, "Date & Time Posted") %>
     </div>
   </div>
-
   <% @search.each do |s| %>
     <div class="col s12 m7">
       <div class="card horizontal">
@@ -48,56 +43,46 @@
           <span class="card-action" id="delete_edit">
           <%= link_to article_comments_path(s) do %>
             <span class="comment">Comment <i class="small material-icons">chat</i></span>
-
           <% end %>
           </span>
           <ul class="collapsible" data-collapsible="accordion">
             <li>
-          <div class="collapsible-header link">SEE ALL COMMENTS
-          <span class="chip"><%= s.comments.count %>
-          </span>
-          </div>
-          <div class="collapsible-body">
-
-            <table class="striped">
-              <tbody>
-                 <% s.comments.each do |f| %>
-                 <tr>
-                   <td>
-                     <strong><%= link_to "#{f.user.user_name}", "/users/#{f.user_id}" %></strong>
-                     <small> commented on <%= f.created_at.strftime("%b %e, %l:%M %p") %></small>
-                     <br />
-                   <%= f.content %>
-               <% if current_user != nil && current_user.id == f.user_id %>
-                 <span class="edit-delete-article">
-                 <%= link_to edit_comment_path(s, f.id), method: :get, :class=>'waves-effect waves-red waves-ripple btn' do %>
-                 <i class="small material-icons">edit</i>
-               <% end %>
-                 <%= link_to delete_comment_path(s, f.id), method: :delete, :class=>'waves-effect waves-red waves-ripple btn' do %>
-                 <i class="small material-icons">delete</i>
-                 <% end %>
-               </span>
-               <% end %>
-                     </td>
-                   </tr>
-               <% end %>
-             </tbody>
-           </table>
-
-         </div>
-        </li>
-</ul>
-
-
-
-
+              <div class="collapsible-header link">SEE ALL COMMENTS
+                <span class="chip"><%= s.comments.count %></span>
+              </div>
+              <div class="collapsible-body">
+                <table class="striped">
+                  <tbody>
+                    <% s.comments.each do |f| %>
+                      <tr>
+                        <td>
+                          <strong><%= link_to "#{f.user.user_name}", "/users/#{f.user_id}" %></strong>
+                          <small> commented on <%= f.created_at.strftime("%b %e, %l:%M %p") %></small>
+                          <br />
+                          <%= f.content %>
+                          <% if current_user != nil && current_user.id == f.user_id %>
+                            <span class="edit-delete-article">
+                              <%= link_to edit_comment_path(s, f.id), method: :get, :class=>'waves-effect waves-red waves-ripple btn' do %>
+                              <i class="small material-icons">edit</i>
+                              <% end %>
+                              <%= link_to delete_comment_path(s, f.id), method: :delete, :class=>'waves-effect waves-red waves-ripple btn' do %>
+                              <i class="small material-icons">delete</i>
+                              <% end %>
+                            </span>
+                          <% end %>
+                        </td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+             </div>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
   <% end %>
-
   <div id="infinite-scrolling">
     <%= will_paginate @articles, :class => "digg_pagination"%>
   </div>
-
 </div>
