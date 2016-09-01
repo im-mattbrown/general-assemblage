@@ -70,7 +70,7 @@
               <div class="collapsible-body">
                 <table class="striped">
                   <tbody>
-                    <% article.comments.each do |f| %>
+                    <% article.comments.order('created_at DESC').each do |f| %>
                       <tr>
                         <td>
                           <strong><%= link_to "#{f.user.user_name}", "/users/#{f.user_id}" %></strong>
