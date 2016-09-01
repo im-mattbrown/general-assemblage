@@ -1,18 +1,14 @@
 <div class="feed-table">
   <% if @user.articles.count == 0 %>
-
     <div class="center-align">
       <h4><%= "Welcome, #{current_user.first_name}!" %></h4>
       <p>You don't have any articles yet. To start press New Article button.</p>
     </div>
-
   <% end %>
     <div class="user-posts">
-
       <div class="center-align">
         <%= link_to "New Article", new_article_path, :class => 'waves-effect waves-red waves-ripple btn' %>
       </div><br />
-
       <div class="card horizontal">
         <div class="card-stacked">
           <div class="card-content col s12">
@@ -35,10 +31,7 @@
           </div>
         </div>
       </div>
-
     </div>
-
-
     <% @articles.each do |article| %>
       <div class="card horizontal">
         <div class="card-stacked">
@@ -55,7 +48,6 @@
             <h5 class="header"><%= article.title %> </h5>
             <p><%= article.content %> </p>
           </div>
-
           <span class="card-action" id="delete_edit">
             <%= link_to "See full post", show_article_path(article), :class => "link" %>
             <% if auth_through_user %>
@@ -65,7 +57,6 @@
               </span>
             <% end %>
           </span>
-
           <span class="card-action" id="delete_edit">
             <%= link_to article_comments_path(article) do %>
               <span class="comment">Comment <i class="small material-icons">chat</i></span>
@@ -106,12 +97,8 @@
           </ul>
         </div>
       </div>
-
     <% end %>
-
-
   <% if @articles_count >= 15 %>
     <%= will_paginate @articles, :class => "digg_pagination"%>
   <% end %>
-
 </div>
