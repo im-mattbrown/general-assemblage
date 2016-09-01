@@ -24,9 +24,21 @@
     background-color: rgba(0,0,0,.9);
   }
 
+  .sticky-mobile{
+    background: black;
+    height: auto;
+    z-index: 170;
+    margin:0 auto;
+    width: 100%;
+    position: fixed;
+    top:0;
+    left:0;
+    right:0;
+  }
   .nav-logo {
     position: absolute;
-    height: 64px;
+    top: 6px;
+    height: 50px;
     width: auto;
   }
 
@@ -93,8 +105,8 @@
   }
 
   .feed-table {
-    padding-top: 30px;
-    left: 0%;
+    position: absolute;
+    top: 80px;
     width: 100%;
   }
   .sort-links {
@@ -259,7 +271,8 @@
 
   .nav-logo {
     position: absolute;
-    height: 64px;
+    top: 6px;
+    height: 50px;
     width: auto;
   }
 
