@@ -2,12 +2,12 @@
   <% if @user.articles.count == 0 %>
     <div class="center-align">
       <h4><%= "Welcome, #{current_user.first_name}!" %></h4>
-      <p>You don't have any articles yet. To start press New Article button.</p>
+      <p>You don't have any posts yet. Click the New Post button to get started!</p>
     </div>
   <% end %>
     <div class="user-posts">
       <div class="center-align">
-        <%= link_to "New Article", new_article_path, :class => 'waves-effect waves-red waves-ripple btn' %>
+        <%= link_to "New Post", new_article_path, :class => 'waves-effect waves-red waves-ripple btn' %>
       </div><br />
       <div class="card horizontal">
         <div class="card-stacked">
@@ -52,8 +52,8 @@
             <%= link_to "See full post", show_article_path(article), :class => "link" %>
             <% if auth_through_user %>
               <span class="edit-delete-article">
-                <%= link_to "Edit Article", edit_article_path(@article), method: :get, :class=>'waves-effect waves-red waves-ripple btn' %>
-                <%= link_to "Delete Article", "/articles/#{article.id}", method: :delete, :class=>'waves-effect waves-red waves-ripple btn' %>
+                <%= link_to "Edit Post", edit_article_path(article), method: :get, :class=>'waves-effect waves-red waves-ripple btn' %>
+                <%= link_to "Delete Post", "/articles/#{article.id}", method: :delete, :class=>'waves-effect waves-red waves-ripple btn' %>
               </span>
             <% end %>
           </span>
