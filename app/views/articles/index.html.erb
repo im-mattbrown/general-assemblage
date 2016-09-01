@@ -37,14 +37,14 @@
               <h5 class="header"><%= s.title %></h5>
               <p> <%= s.content %> </p>
           </div>
-          <div class="card-action link" id="link-box">
-            <%= link_to "See full post", show_article_path(s), :class => "link link-pull-right" %>
-            <div class="comment-center">
+          <span class="card-action" id="delete_edit">
+            <%= link_to "See full post", show_article_path(s), :class => "link" %>
+<div>
             <%= link_to article_comments_path(s) do %>
               <span class="comment">Comment <i class="small material-icons comment-icon">chat</i></span>
             <% end %>
-            </div>
-          </div>
+</div>
+          </span>
           <div class="comment-box">
             <ul class="collapsible" id="comment-collapse" data-collapsible="accordion">
               <li>
