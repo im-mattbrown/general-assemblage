@@ -252,7 +252,7 @@
     left: 43%;
   }
   .comment-center {
-    position: relative;
+    position: absolute;
     left: 43%;
   }
   .comment-icon {
@@ -514,4 +514,8 @@
 .drop-down {
    @extend .red-text, .text-darken-1;
    font-weight: bold;
+}
+
+.slide-bar {
+  z-index: 3;
 }
