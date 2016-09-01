@@ -1,4 +1,7 @@
 class ArticlesController < ApplicationController
+  include AuthHelper
+  include ArticlesHelper
+
   before_action :logged_in?
   before_action :find_article, only: [:show, :edit, :update, :destroy]
   before_action :assure_ownership!, only: [:edit, :update, :destroy]
@@ -34,16 +37,27 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    @article.update(article_params)
+    if auth_through_article
+      if @article.update(article_params)
     flash[:notice] = "Your article was successfully edited."
     redirect_to user_path(current_user)
+      else
+        render :edit
+      end
+    else
+      auth_fail("not authorized to update that", articles_path)
+    end
   end
 
   def destroy
-    @article.comments.destroy_all
-    @article.destroy
-    flash[:notice] = "Your article was successfully deleted."
-    redirect_to user_path(@article.user_id)
+    if auth_through_article
+      @article.comments.destroy_all
+      @article.destroy
+      flash[:notice] = "Your article was successfully deleted."
+      redirect_to user_path(@article.user_id)
+    else
+      auth_fail("not authorized to delete that", articles_path)
+    end
   end
 
   private
@@ -53,11 +67,7 @@ class ArticlesController < ApplicationController
   end
 
   def assure_ownership!
-    redirect_to articles_path unless current_user_is_op?
-  end
-
-  def find_article
-    @article = Article.find_by_id(params[:article_id])
+    auth_fail("U ain't slick smh", articles_path) unless current_user_is_op?
   end
 
   def article_params
