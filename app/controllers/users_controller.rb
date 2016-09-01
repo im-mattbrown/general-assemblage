@@ -10,7 +10,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @comment = Comment.find_by_id(params[:id])
     @article = Article.find_by_id(params[:id])
     @articles_count = Article.where(:user_id => @user.id).length
     @articles = Article.where(:user_id => @user.id).paginate(page: params[:page], per_page: 15).order('created_at DESC')
