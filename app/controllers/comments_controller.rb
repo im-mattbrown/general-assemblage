@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
     @article.comments << @comment
     if @comment.save
       flash[:notice] = "Congratulations! Your comment was successfully posted."
-    redirect_to show_article_path(@article)
+      redirect_to show_article_path(@article)
     else
       flash[:notice] = "Please enter your comment."
       redirect_to article_comments_path
