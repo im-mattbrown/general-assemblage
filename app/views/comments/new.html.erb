@@ -1,9 +1,9 @@
 <div class="edit">
   <h5>New Comment</h5>
     <%= form_for [@article, @comment], :url => post_comment_path do |f| %>
-  <div class="row">
-    <%= f.text_field :content, :length=>"500", :placeholder=>"Content" %>
-  </div>
+    <div class="row">
+      <%= f.text_field :content, :length=>"500", :placeholder=>"Content" %>
+    </div>
     <%= f.submit "Submit", :class=>'waves-effect waves-red waves-ripple btn new-comment-button' %>
     <% end %><br />
 </div>

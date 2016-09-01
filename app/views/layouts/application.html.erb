@@ -9,13 +9,10 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="icon" href="http://i.imgur.com/GmT0px5.png">
   </head>
-
   <body>
-
     <nav>
      <div class="nav-wrapper black lighten-3">
        <a href="/"><img class="nav-logo logo" src="http://i.imgur.com/eklSEi5.png"/></a>
-
        <a href="#" data-activates="mobile-demo" class="button-collapse hamburger"><i class="material-icons">menu</i></a>
        <ul class="right hide-on-med-and-down">
          <% if current_user %>
@@ -39,7 +36,6 @@
        </ul>
      </div>
     </nav>
-
    <%= yield %>
    <% if notice %>
      <% if flash[:bruh] %>
