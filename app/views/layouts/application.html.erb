@@ -9,13 +9,10 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="icon" href="http://i.imgur.com/GmT0px5.png">
   </head>
-
   <body>
-
     <nav>
      <div class="nav-wrapper black lighten-3">
        <a href="/"><img class="nav-logo logo" src="http://i.imgur.com/eklSEi5.png"/></a>
-
        <a href="#" data-activates="mobile-demo" class="button-collapse hamburger"><i class="material-icons">menu</i></a>
        <ul class="right hide-on-med-and-down">
          <% if current_user %>
@@ -29,7 +26,7 @@
        </ul>
        <ul class="side-nav" id="mobile-demo">
          <% if current_user %>
-           <li><span><%= link_to "Welcome, #{current_user.first_name}!", current_user %></span></li>
+           <li><span><%= link_to "Profile", current_user, :class => 'nav-hover' %></span></li>
            <li><%= link_to "Feed", articles_path %></li>
            <li><%= link_to "Logout", "/logout" %></li>
          <% else %>
@@ -39,12 +36,17 @@
        </ul>
      </div>
     </nav>
-
    <%= yield %>
    <% if notice %>
-     <script type="text/javascript">
-       Materialize.toast('<%= notice %>', 6000)
-     </script>
+     <% if flash[:bruh] %>
+       <script type="text/javascript">
+         Materialize.toast('<%= notice %>', 6000, 'bruh')
+       </script>
+    <% else %>
+       <script type="text/javascript">
+         Materialize.toast('<%= notice %>', 6000)
+       </script>
    <% end %>
+  <% end %>
   </body>
 </html>

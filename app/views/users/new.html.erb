@@ -8,9 +8,9 @@
       <%= f.collection_select :city, User::CITIES, :to_s, :to_s, :include_blank => false, :prompt => "Campus(select)" %><br />
       <%= f.text_field :email, :placeholder=>"Email" %>
       <%= f.text_field :user_name, :placeholder=>"User Name" %>
-      <%= f.text_field :image_url, :placeholder=>"Profile Picture" %>
+      <%= f.text_field :image_url, :placeholder=>"Profile Picture (add direct link or leave blank)" %>
       <%= f.text_field :password, :placeholder=>"Password" %>
       <%= f.submit "Submit", :class=>'waves-effect waves-red waves-ripple btn' %>
     <% end %>
-    </div><br />
+  </div><br />
 </body>
