@@ -24,7 +24,7 @@
               <img src="http://i.imgur.com/qg94P70.png" alt="Contact Person">
               <%= @article.article_type %>
             </div>
-            <strong>City:</strong> <%= @article.city %><br />
+            <strong><%= @article.user.course_taken %></strong> <%= @article.city %><br />
             <span class="right-align">
               <strong><%= @article.user.user_name %></strong>
               <small>posted on <%= @article.created_at.strftime("%b %e, %l:%M %p") %></small>
