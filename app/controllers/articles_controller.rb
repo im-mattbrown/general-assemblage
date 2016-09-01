@@ -28,7 +28,7 @@ class ArticlesController < ApplicationController
       flash[:notice] = "Congratulations! Your article was successfully posted."
       redirect_to articles_path
     else
-        flash[:notice] = "Sorry, please try again.There are some issues:  #{@article.errors.full_messages.join(', ')}."
+      flash[:notice] = "Sorry, please try again.There are some issues:  #{@article.errors.full_messages.join(', ')}."
       redirect_to new_article_path
     end
   end
@@ -39,8 +39,8 @@ class ArticlesController < ApplicationController
   def update
     if auth_through_article
       if @article.update(article_params)
-    flash[:notice] = "Your article was successfully edited."
-    redirect_to user_path(current_user)
+        flash[:notice] = "Your article was successfully edited."
+        redirect_to user_path(current_user)
       else
         render :edit
       end
