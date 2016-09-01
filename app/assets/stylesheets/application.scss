@@ -235,6 +235,18 @@
   .row-left{
     float: left;
   }
+  .link-pull-right {
+    position: relative;
+    left: 43%;
+  }
+  .comment-center {
+    position: relative;
+    left: 43%;
+  }
+  .comment-icon {
+    position: relative;
+    top: 9px;
+  }
 }
 
 @media #{$large-and-up} {
@@ -310,6 +322,7 @@
   }
   .comment {
     color: grey;
+
   }
 
   .feed-table {
@@ -455,6 +468,29 @@
 
   .row-left{
     float: left;
+  }
+
+  .link-pull-right {
+    position: relative;
+    left: 44%;
+  }
+  .comment-center {
+    position: relative;
+    left: 44%;
+  }
+  .comment-icon {
+    position: relative;
+    top: 9px;
+  }
+  .comment-box {
+    position: relative;
+    top: 10px;
+  }
+  #link-box {
+    padding: 5px 0 0 0 ;
+  }
+  #comment-collapse {
+    margin: 0px;
   }
 }
 .link {
